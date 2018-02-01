@@ -10,8 +10,8 @@ public class LoginDB {
 
     public LoginDB log(String u, String p) {
 
-        DBConnection connection = new DBConnection();
-        Connection conn = connection.connect();
+        DB_Connection_Users connection = new DB_Connection_Users();
+        Connection conn = connection.connect_Users();
         String QUERY = "SELECT Type FROM Users.users WHERE Username =" + "'" + u + "'" +
                 "AND Password=" + "'" + p + "'";
         try {
@@ -28,11 +28,13 @@ public class LoginDB {
             switch (type) {
                 case "1":
                     System.out.println("Sei una segretaria");
+                    Controller c1 = new Controller();
+                    c1.secrInterface(u, p);
                     break;
                 case "0":
                     System.out.println("Sei un professore");
-                    Controller c1 = new Controller();
-                    c1.profInterface(u, p);
+                    Controller c5 = new Controller();
+                    c5.profInterface(u, p);
                     break;
 
                 case "":

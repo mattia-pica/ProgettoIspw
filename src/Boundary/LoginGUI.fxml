@@ -9,6 +9,6 @@
         <TextField fx:id="user" layoutX="210.0" layoutY="57.0" promptText="username" />
         <TextField fx:id="pass" layoutX="210.0" layoutY="134.0" promptText="password" />
         <Button fx:id="log" layoutX="266.0" layoutY="212.0" mnemonicParsing="false" onAction="#Login" text="LOGIN" />
-        <Button fx:id="guest_log" layoutX="231.0" layoutY="275.0" mnemonicParsing="false" onAction="#GLogin" text="LOGIN AS GUEST" />
+        <Button fx:id="guest_log" layoutX="231.0" layoutY="275.0" mnemonicParsing="false" text="LOGIN AS GUEST" />
     </children>
 </AnchorPane>

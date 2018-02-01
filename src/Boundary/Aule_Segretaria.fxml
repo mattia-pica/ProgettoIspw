@@ -10,9 +10,9 @@
 <?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane fx:id="textOraFine" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="490.0" prefWidth="663.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Boundary.nuova">
+<AnchorPane fx:id="textOraFine" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="490.0" prefWidth="777.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Boundary.ShowAule_Segretaria">
    <children>
-      <TableView fx:id="tableUser" layoutX="19.0" layoutY="14.0" prefHeight="200.0" prefWidth="626.0">
+      <TableView fx:id="tableUser" layoutX="19.0" layoutY="14.0" prefHeight="200.0" prefWidth="754.0">
          <columns>
             <TableColumn fx:id="columnName" prefWidth="79.0" text="NOME AULA" />
             <TableColumn fx:id="columnStato" prefWidth="103.0" text="STATO PR" />
@@ -20,6 +20,7 @@
             <TableColumn fx:id="columnData" minWidth="0.0" prefWidth="134.0" text="DATA PR" />
             <TableColumn fx:id="columnOra" minWidth="0.0" prefWidth="113.0" text="ORA Inizio" />
             <TableColumn fx:id="columnOra1" minWidth="0.0" prefWidth="81.0" text="ORA Fine" />
+            <TableColumn fx:id="columnFrom" minWidth="0.0" prefWidth="126.0" text="From" />
          </columns>
       </TableView>
       <Button fx:id="btnLoad" layoutX="581.0" layoutY="221.0" mnemonicParsing="false" onAction="#loadDataFromDatabase" text="LOAD" />

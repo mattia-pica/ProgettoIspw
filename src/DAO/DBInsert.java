@@ -2,7 +2,7 @@ package DAO;
 
 import java.sql.Statement;
 
-public class DBInsert extends DBConnection{
+public class DBInsert extends DB_Connection_Aule {
 
     public void insert(String type, String type2, String a, String o, String o1, String d){
 
@@ -11,9 +11,9 @@ public class DBInsert extends DBConnection{
 
         try{
 
-            Statement statement = conn.createStatement();
+            Statement statement = conn_Aule.createStatement();
             statement.executeUpdate(QUERY);
-            //conn.close();
+            //conn_Aule.close();
 
         }catch (Exception e){
             System.err.println("Got an exception! ");

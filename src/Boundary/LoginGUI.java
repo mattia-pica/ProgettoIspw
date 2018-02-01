@@ -14,9 +14,6 @@ public class LoginGUI {
     private TextField pass;
     @FXML
     private Button log;
-    @FXML
-    private Button guest_log;
-
 
     public void Login(ActionEvent actionEvent) {
 
@@ -25,8 +22,5 @@ public class LoginGUI {
 
         Controller c = new Controller().check(u, p);
 
-    }
-
-    public void GLogin(ActionEvent actionEvent) {
     }
 }

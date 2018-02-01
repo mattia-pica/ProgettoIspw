@@ -1,17 +1,14 @@
 package DAO;
 
-import Control.Controller;
-
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class DBConnection {
+public class DB_Connection_Aule {
 
-    public static Connection conn;
-
-    public Connection connect() {
+    public static Connection conn_Aule;
+    public Connection connect_Aule() {
 
         final String url = "jdbc:mysql://localhost:3306/Aule";
         final String user = "root";
@@ -19,11 +16,13 @@ public class DBConnection {
 
             try {
                 Class.forName("com.mysql.jdbc.Driver");
-                DBConnection.conn = DriverManager.getConnection(url, user, password);
+                DB_Connection_Aule.conn_Aule = DriverManager.getConnection(url, user, password);
                 System.out.println("CONNESSO");
             } catch (Exception e) {
-                Logger.getLogger(DBConnection.class.getName()).log(Level.SEVERE, null, e);
+                Logger.getLogger(DB_Connection_Aule.class.getName()).log(Level.SEVERE, null, e);
             }
-            return conn;  //NEL VIDEO retun null, ma così da problemi il controller che riceve null e non può andare avanti!
+            return conn_Aule;  //NEL VIDEO retun null, ma così da problemi il controller che riceve null e non può andare avanti!
     }
+
+
 }

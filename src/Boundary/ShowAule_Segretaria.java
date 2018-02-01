@@ -1,6 +1,6 @@
 package Boundary;
 
-import Entity.Classroom;
+import Entity.Classroom_Segretaria;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -11,7 +11,7 @@ import Control.Controller;
 
 import java.time.format.DateTimeFormatter;
 
-public class nuova {
+public class ShowAule_Segretaria {
     @FXML
     private TextField textAltro;
     @FXML
@@ -53,16 +53,18 @@ public class nuova {
     @FXML
     private TableColumn columnOra1;
     @FXML
-    private ObservableList<Classroom> data;
+    private TableColumn columnFrom;
     @FXML
-    private javafx.scene.control.TableView<Classroom> tableUser;
+    private ObservableList<Classroom_Segretaria> data;
+    @FXML
+    private javafx.scene.control.TableView<Classroom_Segretaria> tableUser;
 
 
 
     public void loadDataFromDatabase(ActionEvent actionEvent) {
 
         Controller c3 = new Controller();
-        c3.show(data, tableUser,columnStato, columnName, columnTipo, columnData, columnOra, columnOra1);
+        c3.show(data, tableUser,columnStato, columnName, columnTipo, columnData, columnOra, columnOra1, columnFrom);
 
     }
 
@@ -71,13 +73,11 @@ public class nuova {
         if ((!rbAltro.isSelected()) && (textAule.getText().toString().isEmpty() || textOraInizio.getText().toString().isEmpty()
                 || textOra1.getText().toString().isEmpty() || pickDate.getValue().equals(null))) {
             showMes.setVisible(true);
-
         }else {
 
             if (rbAltro.isSelected()){
                 textAltro.setVisible(true);
             }
-
             String type = "Conf";
             String type2 = "No";
             if (rbEsame.isSelected()) type = "Esame";
@@ -90,7 +90,6 @@ public class nuova {
             Controller c4 = new Controller();
             c4.newP(type, type2, a, o, o1, d);
         }
-
     }
 
     public void altro(ActionEvent actionEvent) {
