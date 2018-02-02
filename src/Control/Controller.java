@@ -6,6 +6,7 @@ import DAO.ShowDatabase_Prof;
 import DAO.ShowDatabase_Secr;
 import Entity.Classroom_Professore;
 import Entity.Classroom_Segretaria;
+import Entity.Professore;
 import javafx.application.Application;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
@@ -44,16 +45,22 @@ public class Controller extends Application {
         thirdStage.show();
     }
 
+    public void createEntityProfessore(String u, String p){
+
+        Professore professore = new Professore(u, p);
+
+    }
+
     public Controller show(ObservableList<Classroom_Segretaria> data, TableView tableUser, TableColumn columnStato, TableColumn columnName, TableColumn columnTipo, TableColumn columnData, TableColumn columnOra, TableColumn columnOra1, TableColumn columnFrom){
         ShowDatabase_Secr showDatabaseSecr = new ShowDatabase_Secr();
         showDatabaseSecr.show_secr(data, tableUser, columnStato, columnName, columnTipo, columnData, columnOra, columnOra1, columnFrom);
         return null;
     }
 
-    public Controller show_p(ObservableList<Classroom_Professore> dataProf, TableView tableProf, TableColumn columnStatoProf, TableColumn columnNameProf, TableColumn columnTipoProf, TableColumn columnDataProf, TableColumn columnOraProf, TableColumn columnOra1Prof){
+    public Controller show_p(ObservableList<Classroom_Professore> dataProf, TableView tableProf, TableColumn columnStatoProf, TableColumn columnNameProf, TableColumn columnTipoProf, TableColumn columnDataProf, TableColumn columnOraProf, TableColumn columnOra1Prof, String u){
 
         ShowDatabase_Prof showDatabase_prof = new ShowDatabase_Prof();
-        showDatabase_prof.show_prof(dataProf, tableProf, columnStatoProf, columnNameProf, columnTipoProf, columnDataProf, columnOraProf, columnOra1Prof);
+        showDatabase_prof.show_prof(dataProf, tableProf, columnStatoProf, columnNameProf, columnTipoProf, columnDataProf, columnOraProf, columnOra1Prof, u);
         return null;
     }
 

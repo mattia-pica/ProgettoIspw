@@ -2,11 +2,14 @@ package Boundary;
 
 import Entity.Classroom_Professore;
 import Entity.Classroom_Segretaria;
+import Entity.Professore;
+import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import Control.Controller;
+import javafx.scene.input.MouseEvent;
 
 
 public class ShowAule_Professore {
@@ -59,9 +62,10 @@ public class ShowAule_Professore {
 
     public void loadDataFromDBProf(ActionEvent actionEvent) {
 
+        String u = "mattiapica";
+
         Controller c6 = new Controller();
-        c6.show_p(dataProf, tableProf,  columnStatoProf,  columnNameProf,  columnTipoProf,  columnDataProf,  columnOraProf,  columnOra1Prof);
-
-
+        c6.show_p(dataProf, tableProf,  columnStatoProf,  columnNameProf,  columnTipoProf,  columnDataProf,  columnOraProf,  columnOra1Prof, u);
     }
+
 }

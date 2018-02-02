@@ -17,11 +17,11 @@ import static com.oracle.jrockit.jfr.Transition.From;
 
 public class ShowDatabase_Prof {
 
-    public void show_prof(ObservableList<Classroom_Professore> data, TableView tableProf, TableColumn columnStatoProf, TableColumn columnNameProf, TableColumn columnTipoProf, TableColumn columnDataProf, TableColumn columnOraProf, TableColumn columnOra1Prof){
+    public void show_prof(ObservableList<Classroom_Professore> data, TableView tableProf, TableColumn columnStatoProf, TableColumn columnNameProf, TableColumn columnTipoProf, TableColumn columnDataProf, TableColumn columnOraProf, TableColumn columnOra1Prof, String u){
 
         DB_Connection_Aule connection = new DB_Connection_Aule();
         Connection connection2 = connection.connect_Aule();
-        String query = "SELECT * FROM Aule.dati " ;
+        String query = "SELECT * FROM Aule.dati WHERE FromP='" + u + "'";
 
         try {
             //Connection conn = DB_Connection_Aule.conn_Aule;

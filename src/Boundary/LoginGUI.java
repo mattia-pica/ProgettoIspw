@@ -12,8 +12,6 @@ public class LoginGUI {
     private TextField user;
     @FXML
     private TextField pass;
-    @FXML
-    private Button log;
 
     public void Login(ActionEvent actionEvent) {
 

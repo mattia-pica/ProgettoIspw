@@ -34,6 +34,7 @@ public class LoginDB {
                 case "0":
                     System.out.println("Sei un professore");
                     Controller c5 = new Controller();
+                    c5.createEntityProfessore(u, p);
                     c5.profInterface(u, p);
                     break;
 
