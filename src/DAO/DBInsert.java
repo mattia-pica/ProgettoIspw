@@ -4,13 +4,15 @@ import java.sql.Statement;
 
 public class DBInsert extends DB_Connection_Aule {
 
-    public void insert(String type, String type2, String a, String o, String o1, String d){
+    public void insert(String type, String a, String o, String o1, String d){
 
-        String QUERY = "INSERT INTO Aule.dati (Nome, Statopr, TipoPr, DataPr, Inizio, Fine) VALUES " +
-                "('" + a + "','" + type2 + "','" + type + "','" + d + "','" + o + "','" + o1 + "')";
+        String QUERY = "INSERT INTO Aule.dati (Nome, TipoPr, DataPr, Inizio, Fine) VALUES " +
+                "('" + a + "','" + type + "','" + d + "','" + o + "','" + o1 + "')";
 
         try{
 
+            DB_Connection_Aule db_connection_aule = new DB_Connection_Aule();
+            db_connection_aule.connect_Aule();
             Statement statement = conn_Aule.createStatement();
             statement.executeUpdate(QUERY);
             //conn_Aule.close();

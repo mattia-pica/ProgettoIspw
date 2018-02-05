@@ -23,16 +23,14 @@ public class Classroom_Segretaria {
     private TableColumn<Classroom_Segretaria, String> columnFrom;
 
     private StringProperty name;
-    private StringProperty stato;
     private StringProperty tipo;
     private StringProperty data;
     private StringProperty ora;
     private StringProperty ora1;
     private StringProperty from;
 
-    public Classroom_Segretaria(String name, String stato, String tipo, String data, String ora, String ora1, String from) {
+    public Classroom_Segretaria(String name, String tipo, String data, String ora, String ora1, String from) {
         this.name = new SimpleStringProperty(name);
-        this.stato =new SimpleStringProperty(stato);
         this.tipo = new SimpleStringProperty(tipo);
         this.data = new SimpleStringProperty(data);
         this.ora = new SimpleStringProperty(ora);
@@ -40,7 +38,6 @@ public class Classroom_Segretaria {
         this.from = new SimpleStringProperty(from);
     }
     public String getName(){return name.get();}
-    public String getStato(){return stato.get();}
     public String getTipo(){return tipo.get();}
     public String getData(){return data.get();}
     public String getOra(){return ora.get();}
@@ -49,9 +46,6 @@ public class Classroom_Segretaria {
 
     public void setName(String value){
         name.set(value);
-    }
-    public void setStato(String value){
-        stato.set(value);
     }
     public void setTipo(String value){
         tipo.set(value);
@@ -72,9 +66,6 @@ public class Classroom_Segretaria {
     public StringProperty tipoProperty() {
         return tipo;
     }
-    public StringProperty statoProperty() {
-        return stato;
-    }
     public StringProperty nameProperty(){
         return name;
     }
@@ -90,6 +81,4 @@ public class Classroom_Segretaria {
     public StringProperty fromProperty() {
         return from;
     }
-
-
 }

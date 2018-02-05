@@ -60,17 +60,16 @@ public class ShowAule_Segretaria {
     private javafx.scene.control.TableView<Classroom_Segretaria> tableUser;
 
 
-
     public void loadDataFromDatabase(ActionEvent actionEvent) {
 
         Controller c3 = new Controller();
-        c3.show(data, tableUser,columnStato, columnName, columnTipo, columnData, columnOra, columnOra1, columnFrom);
+        c3.show(data, tableUser, columnStato, columnName, columnTipo, columnData, columnOra, columnOra1, columnFrom);
 
     }
 
     public void newPrenotation(ActionEvent actionEvent) {
 
-        if ((!rbAltro.isSelected()) && (textAule.getText().toString().isEmpty() || textOraInizio.getText().toString().isEmpty()
+        /*if ((!rbAltro.isSelected()) && (textAule.getText().toString().isEmpty() || textOraInizio.getText().toString().isEmpty()
                 || textOra1.getText().toString().isEmpty() || pickDate.getValue().equals(null))) {
             showMes.setVisible(true);
         }else {
@@ -87,12 +86,12 @@ public class ShowAule_Segretaria {
             String o1 = textOra1.getText().toString();
             String d = pickDate.getValue().format(DateTimeFormatter.ofPattern("dd/MM/yyyy"));
 
-            Controller c4 = new Controller();
+            Controller c7 = new Controller();
             c4.newP(type, type2, a, o, o1, d);
         }
-    }
+    }*/
 
-    public void altro(ActionEvent actionEvent) {
+    /*public void altro(ActionEvent actionEvent) {
 
         textAltro.setVisible(true);
         btnConfirm.setOnAction(new EventHandler<ActionEvent>() {
@@ -118,5 +117,6 @@ public class ShowAule_Segretaria {
                 }
             }
         });
+    }*/
     }
 }

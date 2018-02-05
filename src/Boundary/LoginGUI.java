@@ -18,7 +18,8 @@ public class LoginGUI {
         String u = user.getText().toString();
         String p = pass.getText().toString();
 
-        Controller c = new Controller().check(u, p);
+        Controller c = new Controller();
+        c.check(u, p);
 
     }
 }

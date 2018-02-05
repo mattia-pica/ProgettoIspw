@@ -17,35 +17,40 @@ import static com.oracle.jrockit.jfr.Transition.From;
 
 public class ShowDatabase_Prof {
 
-    public void show_prof(ObservableList<Classroom_Professore> data, TableView tableProf, TableColumn columnStatoProf, TableColumn columnNameProf, TableColumn columnTipoProf, TableColumn columnDataProf, TableColumn columnOraProf, TableColumn columnOra1Prof, String u){
+    public void show_prof(ObservableList<Classroom_Professore> data, TableView tableProf,TableColumn columnNameProf,
+                          TableColumn columnTipoProf, TableColumn columnDataProf, TableColumn columnOraProf,  TableColumn columnOra1Prof,
+                          String uno, String due, String dateSearch){
 
         DB_Connection_Aule connection = new DB_Connection_Aule();
         Connection connection2 = connection.connect_Aule();
-        String query = "SELECT * FROM Aule.dati WHERE FromP='" + u + "'";
+        //String query = "SELECT * FROM dati WHERE dati.Nome NOT IN (SELECT Nome FROM dati WHERE DataPr='" + dateSearch + "'AND Inizio ='" + uno + "')";
 
+        String query = "SELECT DISTINCT Nome/*, TipoPr,DataPr, Inizio,Fine*/ FROM dati WHERE Nome NOT IN " +
+                "(SELECT Nome FROM dati WHERE DataPr='" + dateSearch + "' AND Inizio='" + uno + "' AND Fine='" + due + "')";
+
+        /*String query = "SELECT Nome, TipoPr,DataPr,Inizio,Fine FROM dati EXCEPT " +
+                "(SELECT Nome,TipoPr,DataPr,Inizio,Fine FROM dati WHERE DataPr='" +
+                dateSearch + "' AND Inizio='" + uno + "' AND Fine='" + due + "')";
+*/
         try {
             //Connection conn = DB_Connection_Aule.conn_Aule;
             data = FXCollections.observableArrayList();
             Statement statement = connection2.createStatement();
             ResultSet rs = statement.executeQuery(query);
             while (rs.next()) {
-                /*data.add(new UserDetails(rs.getString(1), rs.getString(2),
-                        rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6)));*/
-                data.add(new Classroom_Professore(rs.getString("Nome"), rs.getString("StatoPr"), rs.getString("TipoPr"),
-                        rs.getString("DataPr"), rs.getString("Inizio"), rs.getString("Fine")));
+                data.add(new Classroom_Professore(rs.getString("Nome")/*,rs.getString("TipoPr"),
+                        rs.getString("DataPr"), rs.getString("Inizio"),
+                        rs.getString("Fine")*/));
             }
         } catch (SQLException e) {
             System.err.println("Error" + e);
         }
 
         columnNameProf.setCellValueFactory(new PropertyValueFactory<>("name"));
-        columnStatoProf.setCellValueFactory(new PropertyValueFactory<>("stato"));
         columnTipoProf.setCellValueFactory(new PropertyValueFactory<>("tipo"));
         columnDataProf.setCellValueFactory(new PropertyValueFactory<>("data"));
         columnOraProf.setCellValueFactory(new PropertyValueFactory<>("ora"));
         columnOra1Prof.setCellValueFactory(new PropertyValueFactory<>("ora1"));
-
-
 
         tableProf.setItems(null);
         tableProf.setItems(data);

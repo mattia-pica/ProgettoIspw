@@ -8,34 +8,31 @@ import javafx.scene.control.TableColumn;
 public class Classroom_Professore {
 
     @FXML
-    private javafx.scene.control.TableView<Classroom_Segretaria> table;
+    private javafx.scene.control.TableView<Classroom_Segretaria> tableProf;
     @FXML
     private TableColumn<Classroom_Professore, String> columnNameProf;
     @FXML
     private TableColumn<Classroom_Professore, String> columnDataProf;
     @FXML
-    private TableColumn<Classroom_Professore, String> columnHourProf;
+    private TableColumn<Classroom_Professore, String> columnOraProf;
     @FXML
-    private TableColumn<Classroom_Professore, String> columnTypeProf;
+    private TableColumn<Classroom_Professore, String> columnTipoProf;
 
     private StringProperty name;
-    private StringProperty stato;
     private StringProperty tipo;
     private StringProperty data;
     private StringProperty ora;
     private StringProperty ora1;
 
-    public Classroom_Professore(String name, String stato, String tipo, String data, String ora, String ora1) {
+    public Classroom_Professore(String name/*, String ora1, String tipo, String data, String ora*/) {
         this.name = new SimpleStringProperty(name);
-        this.stato =new SimpleStringProperty(stato);
-        this.tipo = new SimpleStringProperty(tipo);
+        /*this.tipo = new SimpleStringProperty(tipo);
         this.data = new SimpleStringProperty(data);
         this.ora = new SimpleStringProperty(ora);
-        this.ora1 = new SimpleStringProperty(ora1);
+        this.ora1 = new SimpleStringProperty(ora1);*/
 
     }
     public String getName(){return name.get();}
-    public String getStato(){return stato.get();}
     public String getTipo(){return tipo.get();}
     public String getData(){return data.get();}
     public String getOra(){return ora.get();}
@@ -44,9 +41,6 @@ public class Classroom_Professore {
 
     public void setName(String value){
         name.set(value);
-    }
-    public void setStato(String value){
-        stato.set(value);
     }
     public void setTipo(String value){
         tipo.set(value);
@@ -63,9 +57,6 @@ public class Classroom_Professore {
 
     public StringProperty tipoProperty() {
         return tipo;
-    }
-    public StringProperty statoProperty() {
-        return stato;
     }
     public StringProperty nameProperty(){
         return name;

@@ -15,14 +15,13 @@
       <TableView fx:id="tableProf" layoutX="19.0" layoutY="14.0" prefHeight="200.0" prefWidth="628.0">
          <columns>
             <TableColumn fx:id="columnNameProf" prefWidth="79.0" text="NOME AULA" />
-            <TableColumn fx:id="columnStatoProf" prefWidth="103.0" text="STATO PR" />
             <TableColumn fx:id="columnTipoProf" minWidth="0.0" prefWidth="115.0" text="TIPO PR" />
             <TableColumn fx:id="columnDataProf" minWidth="0.0" prefWidth="134.0" text="DATA PR" />
             <TableColumn fx:id="columnOraProf" minWidth="0.0" prefWidth="113.0" text="ORA Inizio" />
             <TableColumn fx:id="columnOra1Prof" minWidth="0.0" prefWidth="81.0" text="ORA Fine" />
          </columns>
       </TableView>
-      <Button fx:id="btnLoadProf" layoutX="581.0" layoutY="221.0" mnemonicParsing="false" onAction="#loadDataFromDBProf" text="LOAD" />
+      <Button fx:id="btnLoadProf" layoutX="594.0" layoutY="430.0" mnemonicParsing="false" onAction="#loadDataFromDBProf" text="LOAD" />
       <Label layoutX="37.0" layoutY="226.0" text="Aula" />
       <TextField fx:id="textAuleProf" layoutX="119.0" layoutY="221.0" prefHeight="26.0" prefWidth="68.0" />
       <RadioButton fx:id="rbSiProf" layoutX="119.0" layoutY="260.0" mnemonicParsing="false" text="Si">
@@ -42,11 +41,21 @@
       <Label layoutX="37.0" layoutY="291.0" text="Tipo" />
       <Label layoutX="35.0" layoutY="317.0" text="Data" />
       <Label layoutX="35.0" layoutY="351.0" text="Ora Inizio" />
-      <Button fx:id="btnConfirmProf" layoutX="33.0" layoutY="430.0" mnemonicParsing="false" text="Conferma Prenotazione" />
+      <Button fx:id="btnConfirmProf" layoutX="33.0" layoutY="430.0" mnemonicParsing="false" onAction="#confirmPrenotation" text="Conferma Prenotazione" />
       <Label layoutX="37.0" layoutY="385.0" text="Ora fine" />
       <TextField fx:id="textOra1Prof" layoutX="119.0" layoutY="380.0" prefHeight="26.0" prefWidth="55.0" />
-      <Label fx:id="showMes" layoutX="250.0" layoutY="435.0" text="Completare tutti i campi!" textFill="RED" visible="false" />
-      <RadioButton fx:id="rbAltroProf" layoutX="273.0" layoutY="290.0" mnemonicParsing="false" text="Altro" toggleGroup="$groupTipo" />
-      <TextField fx:id="textAltroProf" layoutX="343.0" layoutY="286.0" visible="false" />
+      <Label fx:id="showMes" layoutX="242.0" layoutY="435.0" text="Completare tutti i campi!" textFill="RED" visible="false" />
+      <RadioButton fx:id="rbAltroProf" layoutX="273.0" layoutY="290.0" mnemonicParsing="false" onAction="#altroProf" text="Altro" toggleGroup="$groupTipo" />
+      <TextField fx:id="textAltroProf" layoutX="335.0" layoutY="257.0" visible="false" />
+      <DatePicker fx:id="datePickerSearch" layoutX="513.0" layoutY="221.0" prefHeight="26.0" prefWidth="136.0" />
+      <TextField fx:id="oraInizioSearch" layoutX="513.0" layoutY="256.0" prefHeight="26.0" prefWidth="42.0" />
+      <TextField fx:id="oraFineSearch" layoutX="513.0" layoutY="294.0" prefHeight="26.0" prefWidth="42.0" />
+      <Label layoutX="446.0" layoutY="226.0" text="Data" />
+      <Label layoutX="443.0" layoutY="262.0" text="Ora inzio" />
+      <Label layoutX="446.0" layoutY="299.0" text="Ora fine" />
+      <Label layoutX="559.0" layoutY="262.0" text=":" />
+      <Label layoutX="559.0" layoutY="299.0" text=":" />
+      <TextField fx:id="oraInizioSearch1" layoutX="565.0" layoutY="256.0" prefHeight="26.0" prefWidth="42.0" />
+      <TextField fx:id="oraFineSearch1" layoutX="565.0" layoutY="295.0" prefHeight="26.0" prefWidth="42.0" />
    </children>
 </AnchorPane>
