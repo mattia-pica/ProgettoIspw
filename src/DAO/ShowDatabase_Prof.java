@@ -12,21 +12,30 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.time.LocalTime;
+import java.util.Date;
 
 import static com.oracle.jrockit.jfr.Transition.From;
 
 public class ShowDatabase_Prof {
 
-    public void show_prof(ObservableList<Classroom_Professore> data, TableView tableProf,TableColumn columnNameProf,
-                          TableColumn columnTipoProf, TableColumn columnDataProf, TableColumn columnOraProf,  TableColumn columnOra1Prof,
-                          String uno, String due, String dateSearch){
+    public void show_prof(ObservableList<Classroom_Professore> data, TableView tableProf, TableColumn columnNameProf,
+                          TableColumn columnTipoProf, TableColumn columnDataProf, TableColumn columnOraProf, TableColumn columnOra1Prof,
+                          LocalTime timeInizio, LocalTime timeFine, String dateSearch){
 
         DB_Connection_Aule connection = new DB_Connection_Aule();
         Connection connection2 = connection.connect_Aule();
         //String query = "SELECT * FROM dati WHERE dati.Nome NOT IN (SELECT Nome FROM dati WHERE DataPr='" + dateSearch + "'AND Inizio ='" + uno + "')";
 
-        String query = "SELECT DISTINCT Nome/*, TipoPr,DataPr, Inizio,Fine*/ FROM dati WHERE Nome NOT IN " +
-                "(SELECT Nome FROM dati WHERE DataPr='" + dateSearch + "' AND Inizio='" + uno + "' AND Fine='" + due + "')";
+        //String query = "SELECT DISTINCT Nome/*, TipoPr,DataPr, Inizio,Fine*/ FROM dati WHERE Nome NOT IN " +
+              //  "(SELECT Nome FROM dati WHERE DataPr='" + dateSearch + "' AND Inizio='" + timeInizio + "' AND Fine='" + timeFine + "')";
+
+        //String query = "SELECT /*DISTINCT*/ Nome FROM dati WHERE ((Inizio > '" + timeInizio + "' AND Fine > '" + timeFine + "') OR (Inizio < '" + timeInizio + "' AND Fine < '" + timeFine + "'))";
+
+        String query = "SELECT Nome FROM dati WHERE (DataPr='" + dateSearch + "' AND (('" + timeInizio +
+                "' NOT BETWEEN Inizio AND Fine) AND ('" + timeFine + "' NOT BETWEEN Inizio AND Fine)))";
+
+        //"(SELECT Nome FROM dati WHERE DataPr='" + dateSearch + "' AND Inizio='" + timeInizio + "' AND Fine='" + timeFine + "')";
 
         /*String query = "SELECT Nome, TipoPr,DataPr,Inizio,Fine FROM dati EXCEPT " +
                 "(SELECT Nome,TipoPr,DataPr,Inizio,Fine FROM dati WHERE DataPr='" +
