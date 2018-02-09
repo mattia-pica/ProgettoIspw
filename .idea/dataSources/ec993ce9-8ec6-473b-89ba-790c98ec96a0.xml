@@ -950,7 +950,7 @@
     </column>
     <column id="237" parent="231" name="FromP">
       <Position>6</Position>
-      <DataType>varchar(25)|0</DataType>
+      <DataType>varchar(120)|0</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
     <key id="238" parent="231" name="PRIMARY">

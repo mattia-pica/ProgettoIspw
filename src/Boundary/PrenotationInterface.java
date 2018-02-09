@@ -1,5 +1,9 @@
 package Boundary;
 
+import Entity.Classroom_Professore;
+import Entity.Classroom_Segretaria;
+import Entity.Professore;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
@@ -38,7 +42,7 @@ public class PrenotationInterface {
     private TextField textOraInizioProf1;
     @FXML
     private TextField textOra1Prof1;
-    /*@FXML
+    @FXML
     private TableView tableProf;
     @FXML
     private TableColumn columnNameProf;
@@ -49,9 +53,11 @@ public class PrenotationInterface {
     @FXML
     private TableColumn columnOraProf;
     @FXML
-    private TableColumn columnOra1Prof;*/
+    private TableColumn columnOra1Prof;
+    @FXML
+    private ObservableList<Classroom_Professore> data;
 
-    public void prenota(ActionEvent actionEvent) throws Exception {
+    public void prenota(ActionEvent actionEvent){
 
         boolean a = false;
         String nameAula = "Aula " + textAuleProf.getText().toString();
@@ -70,6 +76,6 @@ public class PrenotationInterface {
         LocalTime timeInizioPrenota = LocalTime.parse(inizioPrenota);
         LocalTime timeFinePrenota = LocalTime.parse(finePrenota);
         Controller c8 = new Controller();
-        c8.newP(nameAula, tipoPrenota, dataPrenota, timeInizioPrenota, timeFinePrenota, a);
+        c8.newP( nameAula, tipoPrenota, dataPrenota, timeInizioPrenota, timeFinePrenota, a);
     }
 }

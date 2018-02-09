@@ -24,13 +24,13 @@ public class Classroom_Professore {
     private StringProperty ora;
     private StringProperty ora1;
 
-    public Classroom_Professore(String name/*, String ora1, String tipo, String data, String ora*/) {
+    public Classroom_Professore(String name/*, String tipo, String data, String ora, String ora1*/) {
         this.name = new SimpleStringProperty(name);
         /*this.tipo = new SimpleStringProperty(tipo);
         this.data = new SimpleStringProperty(data);
         this.ora = new SimpleStringProperty(ora);
-        this.ora1 = new SimpleStringProperty(ora1);*/
-
+        this.ora1 = new SimpleStringProperty(ora1);
+*/
     }
     public String getName(){return name.get();}
     public String getTipo(){return tipo.get();}

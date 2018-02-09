@@ -58,6 +58,6 @@
             <TableColumn fx:id="columnOra1Prof" minWidth="0.0" prefWidth="120.0" text="ORA Fine" />
          </columns>
       </TableView>
-      <Button fx:id="dsfsdf" layoutX="466.0" layoutY="386.0" mnemonicParsing="false" text="Button" />
+      <Button fx:id="showAuleByUser" layoutX="204.0" layoutY="457.0" mnemonicParsing="false" text="Button" />
    </children>
 </AnchorPane>

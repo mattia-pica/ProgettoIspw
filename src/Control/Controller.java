@@ -20,6 +20,7 @@ public class Controller extends Application {
 
     //-------------------FXML LOADER-------------------//
 
+
     @Override
     public void start(Stage primaryStage) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("../Boundary/LoginGUI.fxml"));
@@ -37,11 +38,11 @@ public class Controller extends Application {
         secondStage.show();
     }
 
-    public void profInterface(String u, String p) throws Exception{
+    public void profInterface(String s, String u) throws Exception{
         Stage thirdStage = new Stage();
         Parent root = FXMLLoader.load(getClass().getResource("../Boundary/Aule_Professore.fxml"));
         thirdStage.setTitle("Interface of " + u + "(professor)");
-        thirdStage.setScene(new Scene(root, 679, 490));
+        thirdStage.setScene(new Scene(root, 488, 277));
         thirdStage.setResizable(false);
         thirdStage.show();
     }
@@ -67,12 +68,14 @@ public class Controller extends Application {
 
     //--------------METODI GENERICI------------------//
 
-    public LoginDB check(String u, String p){
-        LoginDB loginDB = new LoginDB().log(u, p);
-        return null;
+    public Professore check(String u, String p){
+        LoginDB loginDB = new LoginDB();
+        Professore professore = loginDB.log(u, p);
+        return professore;
     }
-    public void createEntityProfessore(String u, String p){
-        Professore professore = new Professore(u, p);
+
+    public Professore createEntityProfessore(String u, String p){
+        return new Professore(u, p);
     }
 
     public Controller show(ObservableList<Classroom_Segretaria> data, TableView tableSecretary, TableColumn columnAulaSecretary, TableColumn columnTipoSecretary, TableColumn columnDataSecretary, TableColumn columnInizioSecretary, TableColumn columnFineSecretary, TableColumn columnFromSecretary){
@@ -82,7 +85,7 @@ public class Controller extends Application {
     }
     public Controller show_p(ObservableList<Classroom_Professore> dataProf, TableView tableProf,
                              TableColumn columnNameProf, TableColumn columnTipoProf, TableColumn columnDataProf,
-                             TableColumn columnOraProf , TableColumn columnOra1Prof, LocalTime timeInizio, LocalTime timeFine, String dateSearch){
+                             TableColumn columnOraProf, TableColumn columnOra1Prof, LocalTime timeInizio, LocalTime timeFine, String dateSearch){
         ShowDatabase_Prof showDatabase_prof = new ShowDatabase_Prof();
         showDatabase_prof.show_prof(dataProf, tableProf, columnNameProf, columnTipoProf, columnDataProf, columnOraProf, columnOra1Prof, timeInizio, timeFine, dateSearch);
         return null;

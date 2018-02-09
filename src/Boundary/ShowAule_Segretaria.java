@@ -1,12 +1,11 @@
 package Boundary;
 
 import Entity.Classroom_Segretaria;
+import Entity.Professore;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
-import javafx.scene.layout.AnchorPane;
 import Control.Controller;
 
 import java.time.LocalTime;
@@ -73,7 +72,7 @@ public class ShowAule_Segretaria {
 
     }
 
-    public void newPrenotation(ActionEvent actionEvent){
+    public void newPrenotation(ActionEvent actionEvent, Professore professore){
 
         boolean a = true;
 

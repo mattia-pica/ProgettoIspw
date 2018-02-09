@@ -2,8 +2,8 @@ package Entity;
 
 public class Professore {
 
-    public String username;
-    public String password;
+    private String username;
+    private String password;
 
     public Professore(String username, String password) {
         this.username = username;
@@ -11,11 +11,11 @@ public class Professore {
     }
 
     public String getUsername() {
-        return username;
+        return this.username;
     }
 
     public String getPassword() {
-        return password;
+        return this.password;
     }
 
     public void setUsername(String username) {

@@ -1,6 +1,8 @@
 package Boundary;
 
+import Control.ClassicSingleton;
 import Control.Controller;
+import Entity.Professore;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
@@ -19,8 +21,10 @@ public class LoginGUI {
         String u = user.getText().toString();
         String p = pass.getText().toString();
 
+        ClassicSingleton singleton = ClassicSingleton.getInstance();
         Controller c = new Controller();
-        c.check(u, p);
+        Professore professore = c.check(u, p);
+        singleton.setProfessore(professore);
 
     }
 }

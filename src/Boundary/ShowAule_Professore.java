@@ -1,7 +1,6 @@
 package Boundary;
 
 import Entity.Classroom_Professore;
-import Entity.Professore;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -9,12 +8,8 @@ import javafx.scene.Node;
 import javafx.scene.control.*;
 import Control.Controller;
 
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
-import java.util.Date;
 
 public class ShowAule_Professore {
     @FXML
