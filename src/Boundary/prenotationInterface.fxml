@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="496.0" prefWidth="678.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Boundary.PrenotationInterface">
+   <children>
+      <Label layoutX="18.0" layoutY="253.0" text="Aula" />
+      <TextField fx:id="textAuleProf" layoutX="100.0" layoutY="248.0" prefHeight="26.0" prefWidth="68.0" />
+      <RadioButton fx:id="rbSiProf" layoutX="100.0" layoutY="287.0" mnemonicParsing="false" text="Si">
+         <toggleGroup>
+            <ToggleGroup fx:id="groupPrenotaInterface" />
+         </toggleGroup>
+      </RadioButton>
+      <RadioButton fx:id="rbNoProf" layoutX="181.0" layoutY="287.0" mnemonicParsing="false" text="No">
+         <toggleGroup>
+            <ToggleGroup fx:id="groupPrenotaInterface" />
+         </toggleGroup>
+      </RadioButton>
+      <RadioButton fx:id="rbEsameProf" layoutX="100.0" layoutY="317.0" mnemonicParsing="false" text="Esame">
+         <toggleGroup>
+            <ToggleGroup fx:id="groupTipoInterface" />
+         </toggleGroup>
+      </RadioButton>
+      <RadioButton fx:id="rbConfProf" layoutX="181.0" layoutY="317.0" mnemonicParsing="false" text="Conf">
+         <toggleGroup>
+            <ToggleGroup fx:id="groupTipoInterface" />
+         </toggleGroup>
+      </RadioButton>
+      <DatePicker fx:id="pickDateProf" layoutX="100.0" layoutY="339.0" prefHeight="26.0" prefWidth="136.0" />
+      <TextField fx:id="textOraInizioProf" layoutX="100.0" layoutY="373.0" prefHeight="26.0" prefWidth="42.0" />
+      <Label layoutX="19.0" layoutY="288.0" text="Prenota" />
+      <Label layoutX="18.0" layoutY="318.0" text="Tipo" />
+      <Label layoutX="16.0" layoutY="344.0" text="Data" />
+      <Label layoutX="16.0" layoutY="378.0" text="Ora Inizio" />
+      <Button fx:id="btnConfirmProf" layoutX="14.0" layoutY="457.0" mnemonicParsing="false" onAction="#prenota" text="Conferma Prenotazione" />
+      <Label layoutX="18.0" layoutY="412.0" text="Ora fine" />
+      <TextField fx:id="textOra1Prof" layoutX="100.0" layoutY="407.0" prefHeight="26.0" prefWidth="42.0" />
+      <Label fx:id="showMes" layoutX="223.0" layoutY="462.0" text="Completare tutti i campi!" textFill="RED" visible="false" />
+      <TextField fx:id="textAltroProf" layoutX="260.0" layoutY="313.0" promptText="Altro" />
+      <TextField fx:id="textOraInizioProf1" layoutX="160.0" layoutY="373.0" prefHeight="26.0" prefWidth="42.0" />
+      <TextField fx:id="textOra1Prof1" layoutX="160.0" layoutY="407.0" prefHeight="26.0" prefWidth="42.0" />
+      <Label layoutX="145.0" layoutY="378.0" text=":" />
+      <Label layoutX="143.0" layoutY="412.0" text=":" />
+      <TableView fx:id="tableProf" layoutX="29.0" layoutY="24.0" prefHeight="200.0" prefWidth="633.0">
+         <columns>
+            <TableColumn fx:id="columnNameProf" prefWidth="126.0" text="NOME AULA" />
+            <TableColumn fx:id="columnTipoProf" minWidth="0.0" prefWidth="139.0" text="TIPO PR" />
+            <TableColumn fx:id="columnDataProf" minWidth="0.0" prefWidth="134.0" text="DATA PR" />
+            <TableColumn fx:id="columnOraProf" minWidth="0.0" prefWidth="113.0" text="ORA Inizio" />
+            <TableColumn fx:id="columnOra1Prof" minWidth="0.0" prefWidth="120.0" text="ORA Fine" />
+         </columns>
+      </TableView>
+      <Button fx:id="dsfsdf" layoutX="466.0" layoutY="386.0" mnemonicParsing="false" text="Button" />
+   </children>
+</AnchorPane>

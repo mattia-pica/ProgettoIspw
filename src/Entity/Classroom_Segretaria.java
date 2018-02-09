@@ -10,17 +10,18 @@ public class Classroom_Segretaria {
     @FXML
     private javafx.scene.control.TableView<Classroom_Segretaria> table;
     @FXML
-    private TableColumn<Classroom_Segretaria, String> columnName;
+    private TableColumn<Classroom_Segretaria, String> columnAulaSecretary;
     @FXML
-    private TableColumn<Classroom_Segretaria, String> columnData;
+    private TableColumn<Classroom_Segretaria, String> columnTipoSecretary;
     @FXML
-    private TableColumn<Classroom_Segretaria, String> columnOra;
+    private TableColumn<Classroom_Segretaria, String> columnDataSecretary;
     @FXML
-    private TableColumn<Classroom_Segretaria, String> columnOra1;
+    private TableColumn<Classroom_Segretaria, String> columnInizioSecretary;
     @FXML
-    private TableColumn<Classroom_Segretaria, String> columnTipo;
+    private TableColumn<Classroom_Segretaria, String> columnFineSecretary;
     @FXML
-    private TableColumn<Classroom_Segretaria, String> columnFrom;
+    private TableColumn<Classroom_Segretaria, String> columnFromSecretary;
+    @FXML
 
     private StringProperty name;
     private StringProperty tipo;

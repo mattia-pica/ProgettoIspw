@@ -10,44 +10,48 @@
 <?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane fx:id="textOraFine" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="490.0" prefWidth="777.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Boundary.ShowAule_Segretaria">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="501.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Boundary.ShowAule_Segretaria">
    <children>
-      <TableView fx:id="tableUser" layoutX="19.0" layoutY="14.0" prefHeight="200.0" prefWidth="754.0">
-         <columns>
-            <TableColumn fx:id="columnName" prefWidth="79.0" text="NOME AULA" />
-            <TableColumn fx:id="columnStato" prefWidth="103.0" text="STATO PR" />
-            <TableColumn fx:id="columnTipo" minWidth="0.0" prefWidth="115.0" text="TIPO PR" />
-            <TableColumn fx:id="columnData" minWidth="0.0" prefWidth="134.0" text="DATA PR" />
-            <TableColumn fx:id="columnOra" minWidth="0.0" prefWidth="113.0" text="ORA Inizio" />
-            <TableColumn fx:id="columnOra1" minWidth="0.0" prefWidth="81.0" text="ORA Fine" />
-            <TableColumn fx:id="columnFrom" minWidth="0.0" prefWidth="126.0" text="From" />
-         </columns>
+      <TableView fx:id="tableSecretary" layoutX="9.0" layoutY="14.0" prefHeight="200.0" prefWidth="583.0">
+        <columns>
+          <TableColumn fx:id="columnAulaSecretary" prefWidth="61.0" text="Nome" />
+          <TableColumn fx:id="columnTipoSecretary" prefWidth="99.0" text="Tipo" />
+            <TableColumn fx:id="columnDataSecretary" prefWidth="137.0" text="Data" />
+            <TableColumn fx:id="columnInizioSecretary" prefWidth="76.0" text="Ora inizio" />
+            <TableColumn fx:id="columnFineSecretary" prefWidth="73.0" text="Ora fine" />
+            <TableColumn fx:id="columnFromSecretary" prefWidth="134.0" text="From" />
+        </columns>
       </TableView>
-      <Button fx:id="btnLoad" layoutX="581.0" layoutY="221.0" mnemonicParsing="false" onAction="#loadDataFromDatabase" text="LOAD" />
-      <Label layoutX="37.0" layoutY="226.0" text="Aula" />
-      <TextField fx:id="textAule" layoutX="119.0" layoutY="221.0" prefHeight="26.0" prefWidth="68.0" />
-      <RadioButton fx:id="rbSi" layoutX="119.0" layoutY="260.0" mnemonicParsing="false" text="Si">
+      <Button fx:id="btnSearch" layoutX="524.0" layoutY="452.0" mnemonicParsing="false" onAction="#loadDataFromDatabase" text="Search" />
+      <Label layoutX="18.0" layoutY="235.0" text="Aula" />
+      <TextField fx:id="textAuleSecretary" layoutX="100.0" layoutY="230.0" prefHeight="26.0" prefWidth="68.0" />
+      <RadioButton fx:id="rbSiSecretary" layoutX="100.0" layoutY="269.0" mnemonicParsing="false" text="Si">
          <toggleGroup>
             <ToggleGroup fx:id="groupPrenota" />
          </toggleGroup>
       </RadioButton>
-      <RadioButton fx:id="rbNo" layoutX="200.0" layoutY="260.0" mnemonicParsing="false" text="No" toggleGroup="$groupPrenota" />
-      <RadioButton fx:id="rbEsame" layoutX="119.0" layoutY="290.0" mnemonicParsing="false" text="Esame">
+      <RadioButton fx:id="rbNoSecretary" layoutX="181.0" layoutY="269.0" mnemonicParsing="false" text="No" toggleGroup="$groupPrenota" />
+      <RadioButton fx:id="rbEsameSecretary" layoutX="100.0" layoutY="299.0" mnemonicParsing="false" text="Esame">
          <toggleGroup>
             <ToggleGroup fx:id="groupTipo" />
-         </toggleGroup></RadioButton>
-      <RadioButton fx:id="rbConf" layoutX="200.0" layoutY="290.0" mnemonicParsing="false" text="Conf" toggleGroup="$groupTipo" />
-      <DatePicker fx:id="pickDate" layoutX="119.0" layoutY="312.0" prefHeight="26.0" prefWidth="136.0" />
-      <TextField fx:id="textOraInizio" layoutX="119.0" layoutY="346.0" prefHeight="26.0" prefWidth="55.0" />
-      <Label layoutX="38.0" layoutY="261.0" text="Prenota" />
-      <Label layoutX="37.0" layoutY="291.0" text="Tipo" />
-      <Label layoutX="35.0" layoutY="317.0" text="Data" />
-      <Label layoutX="35.0" layoutY="351.0" text="Ora Inizio" />
-      <Button fx:id="btnConfirm" layoutX="33.0" layoutY="430.0" mnemonicParsing="false" onAction="#newPrenotation" text="Conferma Prenotazione" />
-      <Label layoutX="37.0" layoutY="385.0" text="Ora fine" />
-      <TextField fx:id="textOra1" layoutX="119.0" layoutY="380.0" prefHeight="26.0" prefWidth="55.0" />
-      <Label fx:id="showMes" layoutX="250.0" layoutY="435.0" text="Completare tutti i campi!" textFill="RED" visible="false" />
-      <RadioButton fx:id="rbAltro" layoutX="273.0" layoutY="290.0" mnemonicParsing="false" onAction="#altro" text="Altro" toggleGroup="$groupTipo" />
-      <TextField fx:id="textAltro" layoutX="343.0" layoutY="286.0" visible="false" />
+         </toggleGroup>
+      </RadioButton>
+      <RadioButton fx:id="rbConfSecretary" layoutX="181.0" layoutY="299.0" mnemonicParsing="false" text="Conf" toggleGroup="$groupTipo" />
+      <DatePicker fx:id="pickDateSecretary" layoutX="100.0" layoutY="321.0" prefHeight="26.0" prefWidth="136.0" />
+      <TextField fx:id="InizioSecretary" layoutX="100.0" layoutY="355.0" prefHeight="26.0" prefWidth="42.0" />
+      <Label layoutX="19.0" layoutY="270.0" text="Prenota" />
+      <Label layoutX="18.0" layoutY="300.0" text="Tipo" />
+      <Label layoutX="16.0" layoutY="326.0" text="Data" />
+      <Label layoutX="16.0" layoutY="360.0" text="Ora Inizio" />
+      <Button fx:id="btnConfirmProf" layoutX="202.0" layoutY="439.0" mnemonicParsing="false" onAction="#newPrenotation" text="Conferma Prenotazione" />
+      <Label layoutX="18.0" layoutY="394.0" text="Ora fine" />
+      <TextField fx:id="fineSecretary" layoutX="100.0" layoutY="389.0" prefHeight="26.0" prefWidth="42.0" />
+      <Label fx:id="showMes" layoutX="223.0" layoutY="444.0" text="Completare tutti i campi!" textFill="RED" visible="false" />
+      <TextField fx:id="altroSecretary" layoutX="260.0" layoutY="295.0" promptText="Altro" />
+      <TextField fx:id="inizio1Secretary" layoutX="160.0" layoutY="355.0" prefHeight="26.0" prefWidth="42.0" />
+      <TextField fx:id="fine1Secretary" layoutX="160.0" layoutY="389.0" prefHeight="26.0" prefWidth="42.0" />
+      <Label layoutX="145.0" layoutY="360.0" text=":" />
+      <Label layoutX="143.0" layoutY="394.0" text=":" />
+      <Button fx:id="btnDelete" layoutX="14.0" layoutY="439.0" mnemonicParsing="false" onAction="#deletePrenotaion" text="Elimina Prenotazione" />
    </children>
 </AnchorPane>

@@ -20,11 +20,7 @@ public class LoginDB {
             String type = "";
             if (resultSet.next()) {
                 type = resultSet.getString("Type");
-                //System.out.println(type);
-                //String firstName = resultSet.getString("Username");
-                //System.out.println("Hi " + firstName +" You're logged in!");
-                //System.out.println(resultSet.getString("Tipo"));
-            } //else System.out.println("Login field incorrect!");
+            }
             switch (type) {
                 case "1":
                     System.out.println("Sei una segretaria");
@@ -37,16 +33,10 @@ public class LoginDB {
                     c5.createEntityProfessore(u, p);
                     c5.profInterface(u, p);
                     break;
-
                 case "":
                 default:
                     System.out.print("Login field incorrect!");
             }
-            /*if (type.equals("1")){
-                System.out.println("Sei una segretaria");
-            }else System.out.println("Sei un professore");
-
-            System.out.println(type);*/
         } catch (Exception e) {
             System.err.println("Got an exception!");
             System.err.println(e.getMessage());

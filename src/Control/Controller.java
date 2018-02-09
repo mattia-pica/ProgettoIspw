@@ -14,8 +14,12 @@ import javafx.scene.control.TableView;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.time.LocalTime;
 
 public class Controller extends Application {
+
+    //-------------------FXML LOADER-------------------//
+
     @Override
     public void start(Stage primaryStage) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("../Boundary/LoginGUI.fxml"));
@@ -23,10 +27,7 @@ public class Controller extends Application {
         primaryStage.setScene(new Scene(root, 600, 400));
         primaryStage.show();
     }
-    public Controller check(String u, String p){
-        LoginDB loginDB = new LoginDB().log(u, p);
-        return null;
-    }
+
     public void secrInterface(String u, String p) throws IOException {
         Stage secondStage = new Stage();
         Parent root = FXMLLoader.load(getClass().getResource("../Boundary/Aule_Segretaria.fxml"));
@@ -45,31 +46,59 @@ public class Controller extends Application {
         thirdStage.show();
     }
 
+    public void prenotationInterface() throws Exception{
+        Stage fourthStage = new Stage();
+        Parent root = FXMLLoader.load(getClass().getResource("../Boundary/prenotationInterface.fxml"));
+        fourthStage.setTitle("Prenota Aula");
+        fourthStage.setScene(new Scene(root, 679, 490));
+        fourthStage.setResizable(false);
+        fourthStage.show();
+    }
+
+    public void duplicateKeyMessage() throws Exception{
+
+        Stage fifthStage = new Stage();
+        Parent root = FXMLLoader.load(getClass().getResource("../Boundary/messageDuplicateKey.fxml"));
+        fifthStage.setTitle("Prenota Aula");
+        fifthStage.setScene(new Scene(root, 318, 123));
+        fifthStage.setResizable(false);
+        fifthStage.show();
+    }
+
+    //--------------METODI GENERICI------------------//
+
+    public LoginDB check(String u, String p){
+        LoginDB loginDB = new LoginDB().log(u, p);
+        return null;
+    }
     public void createEntityProfessore(String u, String p){
         Professore professore = new Professore(u, p);
     }
 
-    /*public void newPrenotation(String typeP, String type2P, String aP, String oP, String o1P, String dP){
-        DBInsert dbInsert = new DBInsert();
-        dbInsert.insert(typeP, type2P, aP, oP, o1P, dP);
-    }*/
-
-    public Controller show(ObservableList<Classroom_Segretaria> data, TableView tableUser, TableColumn columnStato, TableColumn columnName, TableColumn columnTipo, TableColumn columnData, TableColumn columnOra, TableColumn columnOra1, TableColumn columnFrom){
+    public Controller show(ObservableList<Classroom_Segretaria> data, TableView tableSecretary, TableColumn columnAulaSecretary, TableColumn columnTipoSecretary, TableColumn columnDataSecretary, TableColumn columnInizioSecretary, TableColumn columnFineSecretary, TableColumn columnFromSecretary){
         ShowDatabase_Secr showDatabaseSecr = new ShowDatabase_Secr();
-        showDatabaseSecr.show_secr(data, tableUser, columnTipo, columnData, columnOra, columnOra1, columnFrom);
+        showDatabaseSecr.show_secr(data, tableSecretary, columnAulaSecretary, columnTipoSecretary, columnDataSecretary, columnInizioSecretary, columnFineSecretary, columnFromSecretary);
         return null;
     }
     public Controller show_p(ObservableList<Classroom_Professore> dataProf, TableView tableProf,
                              TableColumn columnNameProf, TableColumn columnTipoProf, TableColumn columnDataProf,
-                             TableColumn columnOraProf , TableColumn columnOra1Prof, String uno, String due, String dateSearch){
+                             TableColumn columnOraProf , TableColumn columnOra1Prof, LocalTime timeInizio, LocalTime timeFine, String dateSearch){
         ShowDatabase_Prof showDatabase_prof = new ShowDatabase_Prof();
-        showDatabase_prof.show_prof(dataProf, tableProf, columnNameProf, columnTipoProf, columnDataProf, columnOraProf, columnOra1Prof, uno, due, dateSearch);
+        showDatabase_prof.show_prof(dataProf, tableProf, columnNameProf, columnTipoProf, columnDataProf, columnOraProf, columnOra1Prof, timeInizio, timeFine, dateSearch);
         return null;
     }
 
-    public Controller newP(String type, String a, String o, String o1, String d){
+    public Controller newP(String nameAula, String tipoPrenota, String dataPrenota, LocalTime timeInizioPrenota, LocalTime timeFinePrenota, boolean a){
         DBInsert dbInsert = new DBInsert();
-        dbInsert.insert(type, a, o, o1, d);
+        dbInsert.insert(nameAula, tipoPrenota, dataPrenota, timeInizioPrenota, timeFinePrenota, a);
         return null;
     }
+
+    public Controller deletePrenotation(String nameAula, String tipoPrenota, String dataPrenota, LocalTime timeInizioPrenota, LocalTime timeFinePrenota){
+
+        DBDelete dbDelete = new DBDelete();
+        dbDelete.delete(nameAula, tipoPrenota, dataPrenota, timeInizioPrenota, timeFinePrenota);
+        return null;
+    }
+
 }

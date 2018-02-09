@@ -9,9 +9,10 @@ public class DBDelete {
 
     public void delete(String nameAula, String tipoPrenota, String dataPrenota, LocalTime timeInizioPrenota, LocalTime timeFinePrenota){
 
-        String query = "DELETE FROM Aule.dati WHERE Nome='"+nameAula+"' AND ((DataPr='"+dataPrenota+"' AND Inizio<='"+timeInizioPrenota+"' AND Fine>='"+timeInizioPrenota+"')" +
-                "OR (DataPr='"+dataPrenota+"' AND Fine>='"+timeFinePrenota+"' AND Inizio<='"+timeFinePrenota+"') " +
-                "OR (DataPr='"+dataPrenota+"' AND Inizio>='"+timeInizioPrenota+"' AND Fine<='"+timeFinePrenota+"') " +
+        String query = "DELETE FROM Aule.dati WHERE Nome='"+nameAula+"' AND ((DataPr='"+dataPrenota+"' AND Inizio<='"+timeInizioPrenota+
+                "' AND Fine>='"+timeInizioPrenota+"')" + "OR (DataPr='"+dataPrenota+"' AND Fine>='"+timeFinePrenota+"' AND Inizio<='"
+                +timeFinePrenota+"') " + "OR (DataPr='"+dataPrenota+"' AND Inizio>='"
+                +timeInizioPrenota+"' AND Fine<='"+timeFinePrenota+"') " +
                 "OR (DataPr='"+dataPrenota+"' AND Inizio<='"+timeInizioPrenota+"' AND Fine>='"+timeFinePrenota+"'))";
 
         try{
