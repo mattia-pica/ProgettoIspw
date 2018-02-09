@@ -1,6 +1,7 @@
 package DAO;
 
 import Control.Controller;
+import Entity.Professore;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -8,7 +9,9 @@ import java.sql.Statement;
 
 public class LoginDB {
 
-    public LoginDB log(String u, String p) {
+    public Professore log(String u, String p) {
+
+        Professore professore = null;
 
         DB_Connection_Users connection = new DB_Connection_Users();
         Connection conn = connection.connect_Users();
@@ -30,7 +33,7 @@ public class LoginDB {
                 case "0":
                     System.out.println("Sei un professore");
                     Controller c5 = new Controller();
-                    c5.createEntityProfessore(u, p);
+                    professore = c5.createEntityProfessore(u, p);
                     c5.profInterface(u, p);
                     break;
                 case "":
@@ -41,7 +44,7 @@ public class LoginDB {
             System.err.println("Got an exception!");
             System.err.println(e.getMessage());
         }
-        return null;
+        return professore;
     }
 }
 

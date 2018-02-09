@@ -1,6 +1,8 @@
 package DAO;
 
+import Control.ClassicSingleton;
 import Control.Controller;
+import Entity.Professore;
 
 import java.sql.ResultSet;
 import java.sql.Statement;
@@ -14,26 +16,30 @@ public class DBInsert extends DB_Connection_Aule {
 
         if (!a) {  //PROFESSORE
 
-            String QUERYprof = "INSERT INTO Aule.dati (Nome, TipoPr, DataPr, Inizio, Fine, FromP) VALUES " + "('"
-                    + nameAula + "','" + tipoPrenota + "','" + dataPrenota + "','" + timeInizioPrenota + "','" + timeFinePrenota + "')";
-            try {
+            try{
+                String controlQuery = "SELECT Nome FROM Aule.dati WHERE Nome='" + nameAula + "' AND ((DataPr='" + dataPrenota + "' AND Inizio<='" + timeInizioPrenota + "' AND Fine>='" + timeInizioPrenota + "')" + "OR (DataPr='" + dataPrenota + "' AND Fine>='" + timeFinePrenota + "' AND Inizio<='" + timeFinePrenota + "') " + "OR (DataPr='" + dataPrenota + "' AND Inizio>='" + timeInizioPrenota + "' AND Fine<='" + timeFinePrenota + "') " + "OR (DataPr='" + dataPrenota + "' AND Inizio<='" + timeInizioPrenota + "' AND Fine>='" + timeFinePrenota + "'))";
                 DB_Connection_Aule db_connection_aule = new DB_Connection_Aule();
                 db_connection_aule.connect_Aule();
                 Statement statement = conn_Aule.createStatement();
-                statement.executeUpdate(QUERYprof);
-
-            } catch (Exception e) {
-                System.err.println("Got an exception!");
-                String s = String.valueOf(((SQLException) e).getErrorCode());
-                if (s.equals("1062")) {
+                ResultSet rs = statement.executeQuery(controlQuery);
+                if(!rs.wasNull()){
                     Controller c9 = new Controller();
-                    try {
-                        c9.duplicateKeyMessage();
-                    } catch (Exception e1) {
-                        e1.printStackTrace();
-                    }
+                    c9.duplicateKeyMessage();
+                }else {
+
+                    Professore professore = ClassicSingleton.getInstance().getProfessore();
+                    System.out.println("Profesore username: " + professore.getUsername());
+
+                    String QUERYprof = "INSERT INTO Aule.dati (Nome, TipoPr, DataPr, Inizio, Fine, FromP) VALUES " + "('"
+                            + nameAula + "','" + tipoPrenota + "','" + dataPrenota + "','" + timeInizioPrenota + "','" + timeFinePrenota + "','" + professore.getUsername() + "')";
+                    DB_Connection_Aule db_connection_aule1 = new DB_Connection_Aule();
+                    db_connection_aule1.connect_Aule();
+                    Statement statement1 = conn_Aule.createStatement();
+                    statement.executeUpdate(QUERYprof);
                 }
-                System.out.println(s);
+            }catch (Exception ex){
+                System.err.println(ex);
+
             }
 
         } else { //SEGRETARIA
@@ -82,11 +88,17 @@ public class DBInsert extends DB_Connection_Aule {
                                 "OR (DataPr='" + dataPrenota + "' AND Inizio>='" + timeInizioPrenota +
                                 "' AND Fine<='" + timeFinePrenota + "') " + "OR (DataPr='" + dataPrenota +
                                 "' AND Inizio<='" + timeInizioPrenota + "' AND Fine>='" + timeFinePrenota + "'))";
-                        db_connection_aule.connect_Aule();
+                        DB_Connection_Aule db_connection_aule1 = new DB_Connection_Aule();
+                        db_connection_aule1.connect_Aule();
                         Statement statement1 = conn_Aule.createStatement();
-                        statement1.executeQuery(deleteSecretary);
-                        Controller c11 = new Controller();
-                        c11.newP(nameAula, tipoPrenota, dataPrenota, timeInizioPrenota, timeFinePrenota, a);
+                        statement1.executeUpdate(deleteSecretary);
+                        String insertSecretary="INSERT INTO Aule.dati (Nome, TipoPr, DataPr, Inizio, Fine, FromP) VALUES " + "('" + nameAula + "','" + tipoPrenota + "','" + dataPrenota + "','" + timeInizioPrenota + "','" + timeFinePrenota + "','Secretary')";
+                        DB_Connection_Aule db_connection_aule2 = new DB_Connection_Aule();
+                        db_connection_aule2.connect_Aule();
+                        Statement statement2 = conn_Aule.createStatement();
+                        statement2.executeUpdate(insertSecretary);
+                        /*Controller c11 = new Controller();
+                        c11.newP(nameAula, tipoPrenota, dataPrenota, timeInizioPrenota, timeFinePrenota, a);*/
 
                     } catch (Exception ex1) {
                         ex1.printStackTrace();
