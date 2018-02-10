@@ -17,16 +17,15 @@ public class DBInsert extends DB_Connection_Aule {
         if (!a) {  //PROFESSORE
 
             try{
-                String controlQuery = "SELECT Nome FROM Aule.dati WHERE Nome='" + nameAula + "' AND ((DataPr='" + dataPrenota + "' AND Inizio<='" + timeInizioPrenota + "' AND Fine>='" + timeInizioPrenota + "')" + "OR (DataPr='" + dataPrenota + "' AND Fine>='" + timeFinePrenota + "' AND Inizio<='" + timeFinePrenota + "') " + "OR (DataPr='" + dataPrenota + "' AND Inizio>='" + timeInizioPrenota + "' AND Fine<='" + timeFinePrenota + "') " + "OR (DataPr='" + dataPrenota + "' AND Inizio<='" + timeInizioPrenota + "' AND Fine>='" + timeFinePrenota + "'))";
+                String controlQuery = "SELECT Nome FROM Aule.dati WHERE Nome='"+nameAula+"' AND((DataPr='"+dataPrenota+"' AND Inizio<='"+timeInizioPrenota+"' AND Fine>='"+timeInizioPrenota+"')"+"OR(DataPr='"+dataPrenota+"' AND Fine>='"+timeFinePrenota+"' AND Inizio<='"+timeFinePrenota+"') "+"OR(DataPr='"+dataPrenota+"' AND Inizio>='"+timeInizioPrenota+"' AND Fine<='"+timeFinePrenota+"')"+"OR(DataPr='"+dataPrenota+"'AND Inizio<='"+timeInizioPrenota+"'AND Fine>='"+timeFinePrenota+"'))";
                 DB_Connection_Aule db_connection_aule = new DB_Connection_Aule();
                 db_connection_aule.connect_Aule();
                 Statement statement = conn_Aule.createStatement();
                 ResultSet rs = statement.executeQuery(controlQuery);
-                if(!rs.wasNull()){
+                if(rs.next()){
                     Controller c9 = new Controller();
                     c9.duplicateKeyMessage();
                 }else {
-
                     Professore professore = ClassicSingleton.getInstance().getProfessore();
                     System.out.println("Profesore username: " + professore.getUsername());
 
