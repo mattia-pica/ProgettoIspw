@@ -1,5 +1,6 @@
 package Boundary;
 
+import Entity.Classroom_ProfComplete;
 import Entity.Classroom_Professore;
 import Entity.Classroom_Segretaria;
 import Entity.Professore;
@@ -17,16 +18,10 @@ public class PrenotationInterface {
 
     @FXML
     private RadioButton rbAltroProf;
-    /*   @FXML
-        private Button dsfsdf;*/
     @FXML
     private Label showMes;
     @FXML
     private TextField textAuleProf;
-    /*@FXML
-    private RadioButton rbSiProf;
-    @FXML
-    private RadioButton rbNoProf;*/
     @FXML
     private RadioButton rbEsameProf;
     @FXML
@@ -35,8 +30,6 @@ public class PrenotationInterface {
     private DatePicker pickDateProf;
     @FXML
     private TextField textOraInizioProf;
-   /* @FXML
-    private Button btnConfirmProf;*/
     @FXML
     private TextField textOra1Prof;
     @FXML
@@ -59,6 +52,8 @@ public class PrenotationInterface {
     private TableColumn columnOra1Prof;
     @FXML
     private ObservableList<Classroom_Professore> data;
+    @FXML
+    private ObservableList<Classroom_ProfComplete> newdata;
 
     public void prenota(ActionEvent actionEvent){
 
@@ -67,28 +62,30 @@ public class PrenotationInterface {
         String dataPrenota = pickDateProf.getValue().format(DateTimeFormatter.ofPattern("dd/MM/yyyy"));
         String inizioPrenota = textOraInizioProf.getText().toString() + ":" + textOraInizioProf1.getText().toString();
         String finePrenota = textOra1Prof.getText().toString() + ":" + textOra1Prof1.getText().toString();
-        String tipoPrenota="";
+        String tipoPrenota=null;
 
         if(rbEsameProf.isSelected()) tipoPrenota = "Esame";
         else if (rbConfProf.isSelected()) tipoPrenota= "Conferenza";
         if (!rbEsameProf.isSelected() && !rbConfProf.isSelected() && !textAltroProf.getText().toString().isEmpty()){
             tipoPrenota = textAltroProf.getText().toString();}
+        if (rbAltroProf.isSelected()){
+            tipoPrenota=textAltroProf.getText().toString();
+        }
         if(nameAula.isEmpty() || dataPrenota.isEmpty() || inizioPrenota.isEmpty()
                 || finePrenota.isEmpty() || tipoPrenota.isEmpty()) {
             showMes.setVisible(true);
+        }else {
+            LocalTime timeInizioPrenota = LocalTime.parse(inizioPrenota);
+            LocalTime timeFinePrenota = LocalTime.parse(finePrenota);
+            Controller c8 = new Controller();
+            c8.newP(nameAula, tipoPrenota, dataPrenota, timeInizioPrenota, timeFinePrenota, a);
         }
-        if (textAltroProf.isVisible()){
-            tipoPrenota=textAltroProf.getText().toString();
-        }
-        LocalTime timeInizioPrenota = LocalTime.parse(inizioPrenota);
-        LocalTime timeFinePrenota = LocalTime.parse(finePrenota);
-        Controller c8 = new Controller();
-        c8.newP(nameAula, tipoPrenota, dataPrenota, timeInizioPrenota, timeFinePrenota, a);
     }
 
-    public void showTextAltroProf(ActionEvent actionEvent) {
+    public void show_complete_prof(ActionEvent actionEvent) {
 
-        textAltroProf.setVisible(true);
+        Controller controller = new Controller();
+        controller.show_p_complete(newdata, tableProf, columnNameProf, columnTipoProf, columnDataProf, columnOraProf, columnOra1Prof);
 
     }
 }

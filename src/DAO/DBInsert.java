@@ -12,12 +12,16 @@ import java.sql.SQLException;
 
 public class DBInsert extends DB_Connection_Aule {
 
-    public void insert(String nameAula, String tipoPrenota, String dataPrenota, LocalTime timeInizioPrenota, LocalTime timeFinePrenota, boolean a) {
+    public void insert(String nameAula, String tipoPrenota, String dataPrenota, LocalTime timeInizioPrenota,
+                       LocalTime timeFinePrenota, boolean a) {
 
         if (!a) {  //PROFESSORE
-
             try{
-                String controlQuery = "SELECT Nome FROM Aule.dati WHERE Nome='"+nameAula+"' AND((DataPr='"+dataPrenota+"' AND Inizio<='"+timeInizioPrenota+"' AND Fine>='"+timeInizioPrenota+"')"+"OR(DataPr='"+dataPrenota+"' AND Fine>='"+timeFinePrenota+"' AND Inizio<='"+timeFinePrenota+"') "+"OR(DataPr='"+dataPrenota+"' AND Inizio>='"+timeInizioPrenota+"' AND Fine<='"+timeFinePrenota+"')"+"OR(DataPr='"+dataPrenota+"'AND Inizio<='"+timeInizioPrenota+"'AND Fine>='"+timeFinePrenota+"'))";
+                String controlQuery = "SELECT Nome FROM Aule.dati WHERE Nome='"+nameAula+"' AND((DataPr='"+dataPrenota
+                        +"' AND Inizio<='"+timeInizioPrenota+"' AND Fine>='"+timeInizioPrenota+"')"
+                        +"OR(DataPr='"+dataPrenota+"' AND Fine>='"+timeFinePrenota+"' AND Inizio<='"+timeFinePrenota+"') "+
+                        "OR(DataPr='"+dataPrenota+"' AND Inizio>='"+timeInizioPrenota+"' AND Fine<='"+timeFinePrenota+"')"
+                        +"OR(DataPr='"+dataPrenota+"'AND Inizio<='"+timeInizioPrenota+"'AND Fine>='"+timeFinePrenota+"'))";
                 DB_Connection_Aule db_connection_aule = new DB_Connection_Aule();
                 db_connection_aule.connect_Aule();
                 Statement statement = conn_Aule.createStatement();
@@ -30,10 +34,10 @@ public class DBInsert extends DB_Connection_Aule {
                     System.out.println("Profesore username: " + professore.getUsername());
 
                     String QUERYprof = "INSERT INTO Aule.dati (Nome, TipoPr, DataPr, Inizio, Fine, FromP) VALUES " + "('"
-                            + nameAula + "','" + tipoPrenota + "','" + dataPrenota + "','" + timeInizioPrenota + "','" + timeFinePrenota + "','" + professore.getUsername() + "')";
+                            + nameAula + "','" + tipoPrenota + "','" + dataPrenota + "','" + timeInizioPrenota +
+                            "','" + timeFinePrenota + "','" + professore.getUsername() + "')";
                     DB_Connection_Aule db_connection_aule1 = new DB_Connection_Aule();
                     db_connection_aule1.connect_Aule();
-                    Statement statement1 = conn_Aule.createStatement();
                     statement.executeUpdate(QUERYprof);
                 }
             }catch (Exception ex){
@@ -43,40 +47,13 @@ public class DBInsert extends DB_Connection_Aule {
 
         } else { //SEGRETARIA
             System.out.println("CISTOOOOOOOOOOOO");
-            //Prenotazione segretaria
-            /*String controlQuery = "SELECT FROM Aule.dati WHERE Nome='" + nameAula + "' AND ((DataPr='" + dataPrenota + "' AND Inizio<='" + timeInizioPrenota + "' AND Fine>='" + timeInizioPrenota + "')" + "OR (DataPr='" + dataPrenota + "' AND Fine>='" + timeFinePrenota + "' AND Inizio<='" + timeFinePrenota + "') " + "OR (DataPr='" + dataPrenota + "' AND Inizio>='" + timeInizioPrenota + "' AND Fine<='" + timeFinePrenota + "') " + "OR (DataPr='" + dataPrenota + "' AND Inizio<='" + timeInizioPrenota + "' AND Fine>='" + timeFinePrenota + "'))";
-            try{
-                DB_Connection_Aule db_connection_aule = new DB_Connection_Aule();
-                db_connection_aule.connect_Aule();
-                Statement statement = conn_Aule.createStatement();
-                ResultSet rs = statement.executeQuery(controlQuery);
-                while ((rs.next())){
-                    System.out.println("CCCCCCCCCCCC");
-                    *//*String updateSecretary = "DELETE FROM Aule.dati WHERE Nome='" + nameAula + "' AND ((DataPr='" + dataPrenota + "' AND Inizio<='" + timeInizioPrenota + "' AND Fine>='" + timeInizioPrenota + "')" + "OR (DataPr='" + dataPrenota + "' AND Fine>='" + timeFinePrenota + "' AND Inizio<='" + timeFinePrenota + "') " + "OR (DataPr='" + dataPrenota + "' AND Inizio>='" + timeInizioPrenota + "' AND Fine<='" + timeFinePrenota + "') " + "OR (DataPr='" + dataPrenota + "' AND Inizio<='" + timeInizioPrenota + "' AND Fine>='" + timeFinePrenota + "'))";
-                    db_connection_aule.connect_Aule();
-                    Statement statement1 = conn_Aule.createStatement();
-                    statement1.executeQuery(updateSecretary);
-                    Statement statement2 =conn_Aule.createStatement();
-                    String insertSecretary="INSERT INTO Aule.dati (Nome, TipoPr, DataPr, Inizio, Fine, FromP) VALUES " + "('" + nameAula + "','" + tipoPrenota + "','" + dataPrenota + "','" + timeInizioPrenota + "','" + timeFinePrenota + "','Secretary')";
-                    statement2.executeQuery(insertSecretary);*//*
-                }
-                String insertSecretary="INSERT INTO Aule.dati (Nome, TipoPr, DataPr, Inizio, Fine, FromP) VALUES " + "('" + nameAula + "','" + tipoPrenota + "','" + dataPrenota + "','" + timeInizioPrenota + "','" + timeFinePrenota + "','Secretary')";
-                db_connection_aule.connect_Aule();
-                Statement statement1 = conn_Aule.createStatement();
-                statement1.executeQuery(insertSecretary);
-            }catch (SQLException e){
-                e.printStackTrace();
-            }*/
-            String controlQuery ="SELECT DISTINCT Nome FROM dati WHERE Nome NOT IN (SELECT Nome FROM Aule.dati WHERE DataPr='"+dataPrenota+"'" +
+            String controlQuery ="SELECT DISTINCT Nome FROM dati WHERE Nome NOT IN (SELECT Nome FROM Aule.dati " +
+                    "WHERE DataPr='"+dataPrenota+"'" +
                     " AND ((Inizio<='"+timeInizioPrenota+"' AND Fine>='"+timeInizioPrenota+"') " +
                     ""+"OR (Fine>='"+timeFinePrenota+"' AND Inizio<='"+timeFinePrenota+"') "+
                     "OR (Inizio>='"+timeInizioPrenota+"' AND Fine<='"+timeFinePrenota+"') "+
                     "OR ((Inizio<='"+timeInizioPrenota+"' AND Fine>='"+timeInizioPrenota+"') " +
                     "AND (Fine>='"+timeFinePrenota+"' AND Inizio<='"+timeFinePrenota+"'))))";
-
-            /*String querySecretary = "INSERT INTO Aule.dati (Nome, TipoPr, DataPr, Inizio, Fine, FromP) VALUES " +
-                    "('" + nameAula + "','" + tipoPrenota + "','" + dataPrenota + "','" + timeInizioPrenota +
-                    "','" + timeFinePrenota + "','Secretary')";*/
             try {
                 DB_Connection_Aule db_connection_aule = new DB_Connection_Aule();
                 db_connection_aule.connect_Aule();
@@ -110,34 +87,6 @@ public class DBInsert extends DB_Connection_Aule {
                         ex1.printStackTrace();
                     }
                 }
-
-            /*} catch (Exception e) {
-                System.err.println("Got an exception");
-                String s = String.valueOf(((SQLException) e).getErrorCode());
-                if (s.equals("1062")) {
-                    //String updateSecretary = "UPDATE Aule.dati SET TipoPr='" + tipoPrenota + "', DataPr='" + dataPrenota + "', Inizio='" + timeInizioPrenota + "', Fine='" + timeFinePrenota + "' WHERE (Nome='" + nameAula + "')";
-                    String updateSecretary = "DELETE FROM Aule.dati WHERE Nome='" + nameAula +
-                            "' AND ((DataPr='" + dataPrenota + "' AND Inizio<='" + timeInizioPrenota +
-                            "' AND Fine>='" + timeInizioPrenota + "')" + "OR (DataPr='" + dataPrenota +
-                            "' AND Fine>='" + timeFinePrenota + "' AND Inizio<='" + timeFinePrenota + "') " +
-                            "OR (DataPr='" + dataPrenota + "' AND Inizio>='" + timeInizioPrenota +
-                            "' AND Fine<='" + timeFinePrenota + "') " + "OR (DataPr='" + dataPrenota +
-                            "' AND Inizio<='" + timeInizioPrenota + "' AND Fine>='" + timeFinePrenota + "'))";
-                    try {
-                        DB_Connection_Aule db_connection_aule = new DB_Connection_Aule();
-                        db_connection_aule.connect_Aule();
-                        Statement statement = conn_Aule.createStatement();
-                        statement.executeUpdate(updateSecretary);
-                        Controller c11 = new Controller();
-                        c11.newP(nameAula, tipoPrenota, dataPrenota, timeInizioPrenota, timeFinePrenota, a);
-
-                    } catch (Exception ex1) {
-                        ex1.printStackTrace();
-                    }
-                }
-
-            }*/
-
             } catch (Exception ex) {
                 System.err.println(ex);
             }

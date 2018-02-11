@@ -1,6 +1,7 @@
 package Control;
 
 import DAO.*;
+import Entity.Classroom_ProfComplete;
 import Entity.Classroom_Professore;
 import Entity.Classroom_Segretaria;
 import Entity.Professore;
@@ -88,6 +89,14 @@ public class Controller extends Application {
                              TableColumn columnOraProf, TableColumn columnOra1Prof, LocalTime timeInizio, LocalTime timeFine, String dateSearch){
         ShowDatabase_Prof showDatabase_prof = new ShowDatabase_Prof();
         showDatabase_prof.show_prof(dataProf, tableProf, columnNameProf, columnTipoProf, columnDataProf, columnOraProf, columnOra1Prof, timeInizio, timeFine, dateSearch);
+        return null;
+    }
+
+    public Controller show_p_complete(ObservableList<Classroom_ProfComplete> data, TableView tableProf,
+                                      TableColumn columnNameProf, TableColumn columnTipoProf, TableColumn columnDataProf,
+                                      TableColumn columnOraProf, TableColumn columnOra1Prof){
+        ShowCompleteDB_Prof showCompleteDB_prof = new ShowCompleteDB_Prof();
+        showCompleteDB_prof.show_completeDB(data, tableProf, columnNameProf, columnDataProf, columnTipoProf, columnOraProf, columnOra1Prof);
         return null;
     }
 

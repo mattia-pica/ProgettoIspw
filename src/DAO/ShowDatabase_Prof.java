@@ -51,10 +51,6 @@ public class ShowDatabase_Prof {
         }
 
         columnNameProf.setCellValueFactory(new PropertyValueFactory<>("name"));
-        columnTipoProf.setCellValueFactory(new PropertyValueFactory<>("tipo"));
-        columnDataProf.setCellValueFactory(new PropertyValueFactory<>("data"));
-        columnOraProf.setCellValueFactory(new PropertyValueFactory<>("ora"));
-        columnOra1Prof.setCellValueFactory(new PropertyValueFactory<>("ora1"));
 
         tableProf.setItems(null);
         tableProf.setItems(data);

@@ -16,26 +16,22 @@
       <TextField fx:id="textAuleProf" layoutX="100.0" layoutY="248.0" prefHeight="26.0" prefWidth="68.0" />
       <RadioButton fx:id="rbEsameProf" layoutX="100.0" layoutY="296.0" mnemonicParsing="false" text="Esame">
          <toggleGroup>
-            <ToggleGroup fx:id="groupTipoInterface" />
+            <ToggleGroup fx:id="GROUP" />
          </toggleGroup>
       </RadioButton>
-      <RadioButton fx:id="rbConfProf" layoutX="177.0" layoutY="296.0" mnemonicParsing="false" text="Conf">
-         <toggleGroup>
-            <ToggleGroup fx:id="groupTipoInterface" />
-         </toggleGroup>
-      </RadioButton>
+      <RadioButton fx:id="rbConfProf" layoutX="177.0" layoutY="296.0" mnemonicParsing="false" text="Conf" toggleGroup="$GROUP" />
       <DatePicker fx:id="pickDateProf" layoutX="100.0" layoutY="331.0" prefHeight="26.0" prefWidth="136.0" />
       <TextField fx:id="textOraInizioProf" layoutX="100.0" layoutY="373.0" prefHeight="26.0" prefWidth="42.0" />
+      <TextField fx:id="textOraInizioProf1" layoutX="156.0" layoutY="373.0" prefHeight="26.0" prefWidth="42.0" />
+      <TextField fx:id="textOra1Prof" layoutX="100.0" layoutY="407.0" prefHeight="26.0" prefWidth="42.0" />
+      <TextField fx:id="textOra1Prof1" layoutX="156.0" layoutY="407.0" prefHeight="26.0" prefWidth="42.0" />
       <Label layoutX="19.0" layoutY="297.0" text="Tipo" />
       <Label layoutX="17.0" layoutY="336.0" text="Data" />
       <Label layoutX="16.0" layoutY="378.0" text="Ora Inizio" />
       <Button fx:id="btnConfirmProf" layoutX="14.0" layoutY="457.0" mnemonicParsing="false" onAction="#prenota" text="Conferma Prenotazione" />
       <Label layoutX="18.0" layoutY="412.0" text="Ora fine" />
-      <TextField fx:id="textOra1Prof" layoutX="100.0" layoutY="407.0" prefHeight="26.0" prefWidth="42.0" />
-      <Label fx:id="showMes" layoutX="223.0" layoutY="462.0" text="Completare tutti i campi!" textFill="RED" visible="false" />
-      <TextField fx:id="textAltroProf" layoutX="322.0" layoutY="292.0" promptText="Altro" visible="false" />
-      <TextField fx:id="textOraInizioProf1" layoutX="156.0" layoutY="373.0" prefHeight="26.0" prefWidth="42.0" />
-      <TextField fx:id="textOra1Prof1" layoutX="156.0" layoutY="407.0" prefHeight="26.0" prefWidth="42.0" />
+      <Label fx:id="showMes" layoutX="294.0" layoutY="462.0" text="Completare tutti i campi!" textFill="RED" visible="false" />
+      <TextField fx:id="textAltroProf" layoutX="322.0" layoutY="292.0" promptText="Altro" />
       <Label layoutX="145.0" layoutY="378.0" text=":" />
       <Label layoutX="145.0" layoutY="412.0" text=":" />
       <TableView fx:id="tableProf" layoutX="29.0" layoutY="24.0" prefHeight="200.0" prefWidth="633.0">
@@ -47,7 +43,7 @@
             <TableColumn fx:id="columnOra1Prof" minWidth="0.0" prefWidth="120.0" text="ORA Fine" />
          </columns>
       </TableView>
-      <Button fx:id="showAuleByUser" layoutX="204.0" layoutY="457.0" mnemonicParsing="false" text="Button" />
-      <RadioButton fx:id="rbAltroProf" layoutX="239.0" layoutY="296.0" mnemonicParsing="false" onAction="#showTextAltroProf" text="Altro" toggleGroup="$groupTipoInterface" />
+      <Button fx:id="showAuleByUser" layoutX="204.0" layoutY="457.0" mnemonicParsing="false" onAction="#show_complete_prof" text="Button" />
+      <RadioButton fx:id="rbAltroProf" layoutX="239.0" layoutY="296.0" mnemonicParsing="false" text="Altro" toggleGroup="$GROUP" />
    </children>
 </AnchorPane>
