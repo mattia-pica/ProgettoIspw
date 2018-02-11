@@ -72,7 +72,7 @@ public class ShowAule_Segretaria {
 
     }
 
-    public void newPrenotation(ActionEvent actionEvent, Professore professore){
+    public void newPrenotation(ActionEvent actionEvent/*, Professore professore*/){
 
         boolean a = true;
 

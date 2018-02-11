@@ -67,7 +67,12 @@ public class DBInsert extends DB_Connection_Aule {
             }catch (SQLException e){
                 e.printStackTrace();
             }*/
-            String controlQuery = "SELECT Nome FROM Aule.dati WHERE Nome='" + nameAula + "' AND ((DataPr='" + dataPrenota + "' AND Inizio<='" + timeInizioPrenota + "' AND Fine>='" + timeInizioPrenota + "')" + "OR (DataPr='" + dataPrenota + "' AND Fine>='" + timeFinePrenota + "' AND Inizio<='" + timeFinePrenota + "') " + "OR (DataPr='" + dataPrenota + "' AND Inizio>='" + timeInizioPrenota + "' AND Fine<='" + timeFinePrenota + "') " + "OR (DataPr='" + dataPrenota + "' AND Inizio<='" + timeInizioPrenota + "' AND Fine>='" + timeFinePrenota + "'))";
+            String controlQuery ="SELECT DISTINCT Nome FROM dati WHERE Nome NOT IN (SELECT Nome FROM Aule.dati WHERE DataPr='"+dataPrenota+"'" +
+                    " AND ((Inizio<='"+timeInizioPrenota+"' AND Fine>='"+timeInizioPrenota+"') " +
+                    ""+"OR (Fine>='"+timeFinePrenota+"' AND Inizio<='"+timeFinePrenota+"') "+
+                    "OR (Inizio>='"+timeInizioPrenota+"' AND Fine<='"+timeFinePrenota+"') "+
+                    "OR ((Inizio<='"+timeInizioPrenota+"' AND Fine>='"+timeInizioPrenota+"') " +
+                    "AND (Fine>='"+timeFinePrenota+"' AND Inizio<='"+timeFinePrenota+"'))))";
 
             /*String querySecretary = "INSERT INTO Aule.dati (Nome, TipoPr, DataPr, Inizio, Fine, FromP) VALUES " +
                     "('" + nameAula + "','" + tipoPrenota + "','" + dataPrenota + "','" + timeInizioPrenota +
@@ -80,18 +85,20 @@ public class DBInsert extends DB_Connection_Aule {
                 if (!resultSet.wasNull()) {
                     System.out.println("ERROREEEEEEEEEE");
                     try {
-                        String deleteSecretary = "DELETE FROM Aule.dati WHERE Nome='" + nameAula +
-                                "' AND ((DataPr='" + dataPrenota + "' AND Inizio<='" + timeInizioPrenota +
-                                "' AND Fine>='" + timeInizioPrenota + "')" + "OR (DataPr='" + dataPrenota +
-                                "' AND Fine>='" + timeFinePrenota + "' AND Inizio<='" + timeFinePrenota + "') " +
-                                "OR (DataPr='" + dataPrenota + "' AND Inizio>='" + timeInizioPrenota +
-                                "' AND Fine<='" + timeFinePrenota + "') " + "OR (DataPr='" + dataPrenota +
-                                "' AND Inizio<='" + timeInizioPrenota + "' AND Fine>='" + timeFinePrenota + "'))";
+                        String deleteSecretary ="DELETE FROM Aule.dati WHERE DataPr='"+dataPrenota+"'" +
+                                " AND ((Inizio<='"+timeInizioPrenota+"' AND Fine>='"+timeInizioPrenota+"') "+
+                                "OR (Fine>='"+timeFinePrenota+"' AND Inizio<='"+timeFinePrenota+"') "+
+                                "OR (Inizio>='"+timeInizioPrenota+"' AND Fine<='"+timeFinePrenota+"') "+
+                                "OR ((Inizio<='"+timeInizioPrenota+"' AND Fine>='"+timeInizioPrenota+"')" +
+                                " AND (Fine>='"+timeFinePrenota+"' AND Inizio<='"+timeFinePrenota+"')))";
+
                         DB_Connection_Aule db_connection_aule1 = new DB_Connection_Aule();
                         db_connection_aule1.connect_Aule();
                         Statement statement1 = conn_Aule.createStatement();
                         statement1.executeUpdate(deleteSecretary);
-                        String insertSecretary="INSERT INTO Aule.dati (Nome, TipoPr, DataPr, Inizio, Fine, FromP) VALUES " + "('" + nameAula + "','" + tipoPrenota + "','" + dataPrenota + "','" + timeInizioPrenota + "','" + timeFinePrenota + "','Secretary')";
+                        String insertSecretary="INSERT INTO Aule.dati (Nome, TipoPr, DataPr, Inizio, Fine, FromP) " +
+                                "VALUES " + "('" + nameAula + "','" + tipoPrenota + "','" + dataPrenota + "','"
+                                + timeInizioPrenota + "','" + timeFinePrenota + "','Secretary')";
                         DB_Connection_Aule db_connection_aule2 = new DB_Connection_Aule();
                         db_connection_aule2.connect_Aule();
                         Statement statement2 = conn_Aule.createStatement();

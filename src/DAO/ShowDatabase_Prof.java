@@ -30,11 +30,7 @@ public class ShowDatabase_Prof {
         /*String query = "SELECT Nome FROM dati WHERE (DataPr='" + dateSearch + "' AND (('" + timeInizio +
                 "' NOT BETWEEN Inizio AND Fine) AND ('" + timeFine + "' NOT BETWEEN Inizio AND Fine)))";*/
 
-        String query ="SELECT Nome FROM dati WHERE Nome NOT IN (SELECT Nome FROM Aule.dati WHERE DataPr='"+dateSearch+
-                "' AND ((Inizio<='"+timeInizio+"' AND Fine>='"+timeInizio+"') " +
-                "OR (Fine>='"+timeFine+"' AND Inizio<='"+timeFine+"') " +
-                "OR (Inizio>='"+timeInizio+"' AND Fine<='"+timeFine+"') " +
-                "OR (Inizio<='"+timeInizio+"' AND Fine>='"+timeFine+"')))";
+        String query ="SELECT DISTINCT Nome FROM dati WHERE Nome NOT IN (SELECT Nome FROM Aule.dati WHERE DataPr='"+dateSearch+"' AND ((Inizio<='"+timeInizio+"' AND Fine>='"+timeInizio+"') "+"OR (Fine>='"+timeFine+"' AND Inizio<='"+timeFine+"') "+"OR (Inizio>='"+timeInizio+"' AND Fine<='"+timeFine+"') "+"OR ((Inizio<='"+timeInizio+"' AND Fine>='"+timeInizio+"') AND (Fine>='"+timeFine+"' AND Inizio<='"+timeFine+"'))))";
 
         /*String query = "SELECT Nome, TipoPr,DataPr,Inizio,Fine FROM dati EXCEPT " +
                 "(SELECT Nome,TipoPr,DataPr,Inizio,Fine FROM dati WHERE DataPr='" +
