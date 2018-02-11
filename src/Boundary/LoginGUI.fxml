@@ -1,13 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Boundary.LoginGUI">
+<AnchorPane accessibleRole="IMAGE_VIEW" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="205.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Boundary.LoginGUI">
     <children>
-        <TextField fx:id="user" layoutX="210.0" layoutY="57.0" promptText="username" />
-        <TextField fx:id="pass" layoutX="210.0" layoutY="134.0" promptText="password" />
-        <Button fx:id="log" layoutX="266.0" layoutY="212.0" mnemonicParsing="false" onAction="#Login" text="LOGIN" />
+        <TextField fx:id="user" layoutX="169.0" layoutY="57.0" promptText="username" />
+      <PasswordField fx:id="pass" layoutX="169.0" layoutY="103.0" promptText="password" />
+        <Button fx:id="log" layoutX="280.0" layoutY="140.0" mnemonicParsing="false" onAction="#Login" text="LOGIN" />
+      <Button fx:id="btnCancel" layoutX="169.0" layoutY="140.0" mnemonicParsing="false" onAction="#emptyText" text="CANCEL" />
+      <ImageView fitHeight="160.0" fitWidth="151.0" layoutX="14.0" layoutY="27.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="26.41015625" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="235.0" AnchorPane.topAnchor="26.58984375">
+         <image>
+            <Image url="@../logo2.png" />
+         </image>
+      </ImageView>
     </children>
 </AnchorPane>

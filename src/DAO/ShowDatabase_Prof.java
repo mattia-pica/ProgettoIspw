@@ -20,22 +20,15 @@ import static com.oracle.jrockit.jfr.Transition.From;
 public class ShowDatabase_Prof {
 
     public void show_prof(ObservableList<Classroom_Professore> data, TableView tableProf, TableColumn columnNameProf,
-                          TableColumn columnTipoProf, TableColumn columnDataProf, TableColumn columnOraProf, TableColumn columnOra1Prof,
                           LocalTime timeInizio, LocalTime timeFine, String dateSearch){
 
         DB_Connection_Aule connection = new DB_Connection_Aule();
         Connection connection2 = connection.connect_Aule();
-        //String query = "SELECT * FROM dati WHERE dati.Nome NOT IN (SELECT Nome FROM dati WHERE DataPr='" + dateSearch + "'AND Inizio ='" + uno + "')";
-
-        /*String query = "SELECT Nome FROM dati WHERE (DataPr='" + dateSearch + "' AND (('" + timeInizio +
-                "' NOT BETWEEN Inizio AND Fine) AND ('" + timeFine + "' NOT BETWEEN Inizio AND Fine)))";*/
-
-        String query ="SELECT DISTINCT Nome FROM dati WHERE Nome NOT IN (SELECT Nome FROM Aule.dati WHERE DataPr='"+dateSearch+"' AND ((Inizio<='"+timeInizio+"' AND Fine>='"+timeInizio+"') "+"OR (Fine>='"+timeFine+"' AND Inizio<='"+timeFine+"') "+"OR (Inizio>='"+timeInizio+"' AND Fine<='"+timeFine+"') "+"OR ((Inizio<='"+timeInizio+"' AND Fine>='"+timeInizio+"') AND (Fine>='"+timeFine+"' AND Inizio<='"+timeFine+"'))))";
-
-        /*String query = "SELECT Nome, TipoPr,DataPr,Inizio,Fine FROM dati EXCEPT " +
-                "(SELECT Nome,TipoPr,DataPr,Inizio,Fine FROM dati WHERE DataPr='" +
-                dateSearch + "' AND Inizio='" + uno + "' AND Fine='" + due + "')";
-*/
+        String query ="SELECT DISTINCT Nome FROM dati WHERE Nome NOT IN (SELECT Nome FROM Aule.dati WHERE DataPr='"
+                +dateSearch+"' AND ((Inizio<='"+timeInizio+"' AND Fine>='"+timeInizio+"') "+"OR (Fine>='"+timeFine
+                +"' AND Inizio<='"+timeFine+"') "+"OR (Inizio>='"+timeInizio+"' AND Fine<='"+timeFine+"') "+
+                "OR ((Inizio<='"+timeInizio+"' AND Fine>='"+timeInizio+"') AND (Fine>='"+timeFine+"' AND Inizio<='"
+                +timeFine+"'))))";
         try {
             //Connection conn = DB_Connection_Aule.conn_Aule;
             data = FXCollections.observableArrayList();
@@ -49,13 +42,8 @@ public class ShowDatabase_Prof {
         } catch (SQLException e) {
             System.err.println("Error" + e);
         }
-
         columnNameProf.setCellValueFactory(new PropertyValueFactory<>("name"));
-
         tableProf.setItems(null);
         tableProf.setItems(data);
-
-
     }
-
 }

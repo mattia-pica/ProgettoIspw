@@ -38,6 +38,8 @@ public class LoginDB {
                     break;
                 case "":
                 default:
+                    Controller c12 = new Controller();
+                    c12.incorrectLoginField();
                     System.out.print("Login field incorrect!");
             }
         } catch (Exception e) {

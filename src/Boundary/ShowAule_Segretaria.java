@@ -95,68 +95,9 @@ public class ShowAule_Segretaria {
 
         String inizio = InizioSecretary.getText().toString() + ":" + inizio1Secretary.getText().toString();
         String fine = fineSecretary.getText().toString() + ":" + fine1Secretary.getText().toString();
-
         LocalTime timeInizioSec = LocalTime.parse(inizio);
         LocalTime timeFineSec = LocalTime.parse(fine);
-
         Controller c9 = new Controller();
         c9.newP(nameAulaSec, typeSec, dateSec, timeInizioSec, timeFineSec, a);
-
-        /*public void altro(ActionEvent actionEvent) {
-
-        textAltro.setVisible(true);
-        btnConfirm.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-
-                if (textAule.getText().toString().isEmpty() || textOraInizio.getText().toString().isEmpty()
-                        || textOra1.getText().toString().isEmpty() || pickDate.getValue().equals(null)
-                        || textAltro.getText().toString().isEmpty()) {
-                    showMes.setVisible(true);
-                } else {
-
-                    String type = textAltro.getText().toString();
-                    String type2 = "No";
-                    //if (rbEsame.isSelected()) type = "Esame";
-                    if (rbSi.isSelected()) type2 = "Si";
-                    String a = "Aula " + textAule.getText().toString();
-                    String o = textOraInizio.getText().toString();
-                    String o1 = textOra1.getText().toString();
-                    String d = pickDate.getValue().format(DateTimeFormatter.ofPattern("dd/MM/yyyy"));
-                    Controller c4 = new Controller();
-                    c4.newP(type, type2, a, o, o1, d);
-                }
-            }
-        });
-    }*/
-    }
-
-    public void deletePrenotaion(ActionEvent actionEvent) {
-
-        if(textAuleSecretary.getText().toString().isEmpty() || InizioSecretary.getText().toString().isEmpty() ||
-                inizio1Secretary.getText().toString().isEmpty() || fineSecretary.getText().toString().isEmpty()
-                || fine1Secretary.getText().toString().isEmpty()){
-            showMes.setVisible(true);
-        }
-
-        String nameAulaSec ="Aula " + textAuleSecretary.getText().toString();
-        String dateSec = pickDateSecretary.getValue().format(DateTimeFormatter.ofPattern("dd/MM/yyyy"));
-        String typeSec ="Conferenza";
-
-        if (rbEsameSecretary.isSelected()) typeSec="Esame";
-
-       /*int inizioSec = Integer.parseInt(InizioSecretary.getText().toString());
-       int inizio1Sec = Integer.parseInt(inizio1Secretary.getText().toString());
-       int fineSec = Integer.parseInt(fineSecretary.getText().toString());
-       int fine1Sec = Integer.parseInt(fine1Secretary.getText().toString());*/
-
-        String inizio = InizioSecretary.getText().toString() + ":" + inizio1Secretary.getText().toString();
-        String fine = fineSecretary.getText().toString() + ":" + fine1Secretary.getText().toString();
-
-        LocalTime timeInizioSec = LocalTime.parse(inizio);
-        LocalTime timeFineSec = LocalTime.parse(fine);
-
-        Controller c10 = new Controller();
-        c10.deletePrenotation(nameAulaSec, typeSec, dateSec, timeInizioSec, timeFineSec);
     }
 }

@@ -43,7 +43,7 @@
             <TableColumn fx:id="columnOra1Prof" minWidth="0.0" prefWidth="120.0" text="ORA Fine" />
          </columns>
       </TableView>
-      <Button fx:id="showAuleByUser" layoutX="204.0" layoutY="457.0" mnemonicParsing="false" onAction="#show_complete_prof" text="Button" />
+      <Button fx:id="showAuleByUser" layoutX="204.0" layoutY="457.0" mnemonicParsing="false" onAction="#show_complete_prof" text="Mie Prenotazioni" />
       <RadioButton fx:id="rbAltroProf" layoutX="239.0" layoutY="296.0" mnemonicParsing="false" text="Altro" toggleGroup="$GROUP" />
    </children>
 </AnchorPane>

@@ -93,7 +93,7 @@ public class ShowAule_Professore {
         Date timeFine = sdf.parse(due);*/
 
         Controller c6 = new Controller();
-        c6.show_p(dataProf, tableProf,  columnNameProf,  columnTipoProf,  columnDataProf,  columnOraProf,  columnOra1Prof, timeInizio, timeFine, dateSearch);
+        c6.show_p(dataProf, tableProf,  columnNameProf, timeInizio, timeFine, dateSearch);
     }
     public void newPrenotation(ActionEvent actionEvent) throws Exception {
 

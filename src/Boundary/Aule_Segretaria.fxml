@@ -22,7 +22,7 @@
             <TableColumn fx:id="columnFromSecretary" prefWidth="134.0" text="From" />
         </columns>
       </TableView>
-      <Button fx:id="btnSearch" layoutX="524.0" layoutY="452.0" mnemonicParsing="false" onAction="#loadDataFromDatabase" text="Search" />
+      <Button fx:id="btnSearch" layoutX="205.0" layoutY="439.0" mnemonicParsing="false" onAction="#loadDataFromDatabase" text="Search" />
       <Label layoutX="18.0" layoutY="235.0" text="Aula" />
       <TextField fx:id="textAuleSecretary" layoutX="100.0" layoutY="230.0" prefHeight="26.0" prefWidth="68.0" />
       <RadioButton fx:id="rbSiSecretary" layoutX="100.0" layoutY="269.0" mnemonicParsing="false" text="Si">
@@ -43,15 +43,14 @@
       <Label layoutX="18.0" layoutY="300.0" text="Tipo" />
       <Label layoutX="16.0" layoutY="326.0" text="Data" />
       <Label layoutX="16.0" layoutY="360.0" text="Ora Inizio" />
-      <Button fx:id="btnConfirmProf" layoutX="202.0" layoutY="439.0" mnemonicParsing="false" onAction="#newPrenotation" text="Conferma Prenotazione" />
+      <Button fx:id="btnConfirmProf" layoutX="19.0" layoutY="439.0" mnemonicParsing="false" onAction="#newPrenotation" text="Conferma Prenotazione" />
       <Label layoutX="18.0" layoutY="394.0" text="Ora fine" />
       <TextField fx:id="fineSecretary" layoutX="100.0" layoutY="389.0" prefHeight="26.0" prefWidth="42.0" />
-      <Label fx:id="showMes" layoutX="223.0" layoutY="444.0" text="Completare tutti i campi!" textFill="RED" visible="false" />
+      <Label fx:id="showMes" layoutX="300.0" layoutY="444.0" text="Completare tutti i campi!" textFill="RED" visible="false" />
       <TextField fx:id="altroSecretary" layoutX="260.0" layoutY="295.0" promptText="Altro" />
       <TextField fx:id="inizio1Secretary" layoutX="160.0" layoutY="355.0" prefHeight="26.0" prefWidth="42.0" />
       <TextField fx:id="fine1Secretary" layoutX="160.0" layoutY="389.0" prefHeight="26.0" prefWidth="42.0" />
       <Label layoutX="145.0" layoutY="360.0" text=":" />
       <Label layoutX="143.0" layoutY="394.0" text=":" />
-      <Button fx:id="btnDelete" layoutX="14.0" layoutY="439.0" mnemonicParsing="false" onAction="#deletePrenotaion" text="Elimina Prenotazione" />
    </children>
 </AnchorPane>

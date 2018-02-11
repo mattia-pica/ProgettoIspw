@@ -1,7 +1,6 @@
 package DAO;
 
-import Control.ClassicSingleton;
-import Control.Controller;
+import Boundary.Utils.ClassicSingleton;
 import Entity.Classroom_ProfComplete;
 import Entity.Professore;
 import javafx.collections.FXCollections;
