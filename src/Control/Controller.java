@@ -1,5 +1,6 @@
 package Control;
 
+import Utils.saveFileprenotation;
 import DAO.*;
 import Entity.Classroom_ProfComplete;
 import Entity.Classroom_Professore;
@@ -14,7 +15,6 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.stage.Stage;
 
-import java.io.FileWriter;
 import java.io.IOException;
 import java.time.LocalTime;
 
@@ -120,4 +120,12 @@ public class Controller extends Application {
         dbInsert.insert(nameAula, tipoPrenota, dataPrenota, timeInizioPrenota, timeFinePrenota, a);
         return null;
     }
+
+    public void write(String nameAula, String tipoPrenota, LocalTime timeInizioPrenota, LocalTime timeFinePrenota,
+                      String nameProf, String surnameProf) throws Exception {
+
+        saveFileprenotation saveFileprenotation = new saveFileprenotation();
+        saveFileprenotation.write(nameAula, tipoPrenota, timeInizioPrenota, timeFinePrenota, nameProf, surnameProf);
+    }
+
 }

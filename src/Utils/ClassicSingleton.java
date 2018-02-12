@@ -1,4 +1,4 @@
-package Boundary.Utils;
+package Utils;
 
 import Entity.Professore;
 

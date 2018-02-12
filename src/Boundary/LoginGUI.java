@@ -1,6 +1,6 @@
 package Boundary;
 
-import Boundary.Utils.ClassicSingleton;
+import Utils.ClassicSingleton;
 import Control.Controller;
 import Entity.Professore;
 import javafx.event.ActionEvent;

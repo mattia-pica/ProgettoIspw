@@ -1,10 +1,9 @@
 package DAO;
 
-import Boundary.Utils.ClassicSingleton;
+import Utils.ClassicSingleton;
 import Control.Controller;
 import Entity.Professore;
 
-import java.io.PrintWriter;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.time.LocalTime;
@@ -68,14 +67,9 @@ public class DBInsert extends DB_Connection_Aule {
                     if(rsSurname.next()){
                         surnameProf =rsSurname.getString("Surname");
                     }
-                    PrintWriter writer = new PrintWriter("/home/mattia/Scrivania/Prenotazione.txt", "UTF-8");
-                    writer.println("Prenotazione Effettuata:");
-                    writer.println("Nome:\t\t" + nameAula);
-                    writer.println("Per:\t\t" + tipoPrenota);
-                    writer.println("Inizio:\t\t" + timeInizioPrenota);
-                    writer.println("Fine:\t\t" + timeFinePrenota);
-                    writer.println("A nome di :\t\t" + nameProf + " " + surnameProf);
-                    writer.close();
+
+                    Controller c13 = new Controller();
+                    c13.write(nameAula, tipoPrenota, timeInizioPrenota, timeFinePrenota, nameProf, surnameProf);
                     }
                 }catch(Exception ex){
                     System.err.println(ex);
