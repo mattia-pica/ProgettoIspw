@@ -79,7 +79,6 @@ public class DBInsert extends DB_Connection_Aule {
 
 
             } else{
-                System.out.println("CISTOOOOOOOOOOOO");
                 String controlQuery = "SELECT DISTINCT Nome FROM dati WHERE Nome NOT IN (SELECT Nome FROM Aule.dati " +
                         "WHERE DataPr='" + dataPrenota + "'" +
                         " AND ((Inizio<='" + timeInizioPrenota + "' AND Fine>='" + timeInizioPrenota + "') " +

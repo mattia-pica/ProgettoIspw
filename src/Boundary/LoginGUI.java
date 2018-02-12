@@ -17,7 +17,7 @@ public class LoginGUI {
     @FXML
     private TextField pass;
 
-    public void Login(ActionEvent actionEvent) throws Exception {
+    public void Login(ActionEvent actionEvent){
 
         String u = user.getText().toString();
         String p = pass.getText().toString();
@@ -26,8 +26,6 @@ public class LoginGUI {
         Controller c = new Controller();
         Professore professore = c.check(u, p);
         singleton.setProfessore(professore);
-
-
 
     }
 
