@@ -39,6 +39,7 @@ public class ShowDatabase_Prof {
                         rs.getString("DataPr"), rs.getString("Inizio"),
                         rs.getString("Fine")*/));
             }
+            statement.close();
         } catch (SQLException e) {
             System.err.println("Error" + e);
         }

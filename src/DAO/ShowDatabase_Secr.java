@@ -38,6 +38,7 @@ public class ShowDatabase_Secr {
                         rs.getString("DataPr"), rs.getString("Inizio"), rs.getString("Fine"),
                         rs.getString("FromP")));
             }
+            statement.close();
         } catch (SQLException e) {
             System.err.println("Error" + e);
         }

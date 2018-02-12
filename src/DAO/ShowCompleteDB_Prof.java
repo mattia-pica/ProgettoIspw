@@ -34,6 +34,7 @@ public class ShowCompleteDB_Prof {
                         rs.getString("DataPr"), rs.getString("Inizio"),
                         rs.getString("Fine")));
             }
+            statement.close();
         } catch (SQLException e) {
             System.err.println("Error" + e);
         }
@@ -46,7 +47,6 @@ public class ShowCompleteDB_Prof {
 
         tableProf.setItems(null);
         tableProf.setItems(data);
-
 
     }
 

@@ -23,6 +23,7 @@ public class LoginDB {
             String type = "";
             if (resultSet.next()) {
                 type = resultSet.getString("Type");
+                statement.close();
             }
             switch (type) {
                 case "1":

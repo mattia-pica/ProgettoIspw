@@ -18,7 +18,6 @@ public class DBInsert extends DB_Connection_Aule {
                        LocalTime timeFinePrenota, boolean a) {
 
 
-
         //---------------------PROFESSORE------------------//
 
         if (!a) {
@@ -61,12 +60,15 @@ public class DBInsert extends DB_Connection_Aule {
                     if(rsName.next()){
                         nameProf=rsName.getString("Name");
                     }
-
+                    statement.close();
+                    statement3.close();
                     Statement statement1 = conn_Users.createStatement();
                     ResultSet rsSurname = statement1.executeQuery(getProfSurname);
                     if(rsSurname.next()){
                         surnameProf =rsSurname.getString("Surname");
+                        statement1.close();
                     }
+                    statement1.close();
 
                     Controller c13 = new Controller();
                     c13.write(nameAula, tipoPrenota, timeInizioPrenota, timeFinePrenota, nameProf, surnameProf);
@@ -108,6 +110,8 @@ public class DBInsert extends DB_Connection_Aule {
                             db_connection_aule1.connect_Aule();
                             Statement statement1 = conn_Aule.createStatement();
                             statement1.executeUpdate(deleteSecretary);
+                            statement1.close();
+                            statement.close();
                             String insertSecretary = "INSERT INTO Aule.dati (Nome, TipoPr, DataPr, Inizio, Fine, FromP) " +
                                     "VALUES " + "('" + nameAula + "','" + tipoPrenota + "','" + dataPrenota + "','"
                                     + timeInizioPrenota + "','" + timeFinePrenota + "','Secretary')";
@@ -115,6 +119,8 @@ public class DBInsert extends DB_Connection_Aule {
                             db_connection_aule2.connect_Aule();
                             Statement statement2 = conn_Aule.createStatement();
                             statement2.executeUpdate(insertSecretary);
+                            statement2.close();
+
 
                         } catch (Exception ex1) {
                             ex1.printStackTrace();

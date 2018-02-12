@@ -14,15 +14,13 @@ import java.time.format.DateTimeFormatter;
 public class ShowAule_Segretaria {
 
     @FXML
+    private RadioButton rbAltroSecretary;
+    @FXML
     private Button btnDelete;
     @FXML
     private TextField textAuleSecretary;
     @FXML
-    private RadioButton rbSiSecretary;
-    @FXML
     private ToggleGroup groupPrenotaInterface;
-    @FXML
-    private RadioButton rbNoSecretary;
     @FXML
     private RadioButton rbEsameSecretary;
     @FXML
@@ -72,32 +70,39 @@ public class ShowAule_Segretaria {
 
     }
 
-    public void newPrenotation(ActionEvent actionEvent/*, Professore professore*/){
+    public void newPrenotation(ActionEvent actionEvent){
 
         boolean a = true;
-
-       if(textAuleSecretary.getText().toString().isEmpty() || InizioSecretary.getText().toString().isEmpty() ||
-               inizio1Secretary.getText().toString().isEmpty() || fineSecretary.getText().toString().isEmpty()
-               || fine1Secretary.getText().toString().isEmpty()){
-           showMes.setVisible(true);
-       }
-
        String nameAulaSec ="Aula " + textAuleSecretary.getText().toString();
        String dateSec = pickDateSecretary.getValue().format(DateTimeFormatter.ofPattern("dd/MM/yyyy"));
-       String typeSec ="Conferenza";
+       String inizio = InizioSecretary.getText().toString() + ":" + inizio1Secretary.getText().toString();
+       String fine = fineSecretary.getText().toString() + ":" + fine1Secretary.getText().toString();
+       String typeSec =null;
 
-       if (rbEsameSecretary.isSelected()) typeSec="Esame";
+       if (rbEsameSecretary.isSelected()) {
+           typeSec="Esame";
+       }else if (rbConfSecretary.isSelected()){
+           typeSec="Conferenza";
+       }
+       if(!rbEsameSecretary.isSelected() && !rbConfSecretary.isSelected()
+               && !altroSecretary.getText().toString().isEmpty()){
+           typeSec=altroSecretary.getText().toString();
+       }
+
+        if(textAuleSecretary.getText().toString().isEmpty() || InizioSecretary.getText().toString().isEmpty() ||
+                inizio1Secretary.getText().toString().isEmpty() || fineSecretary.getText().toString().isEmpty()
+                || fine1Secretary.getText().toString().isEmpty()){
+            showMes.setVisible(true);
+        }else {
+            LocalTime timeInizioSec = LocalTime.parse(inizio);
+            LocalTime timeFineSec = LocalTime.parse(fine);
+            Controller c9 = new Controller();
+            c9.newP(nameAulaSec, typeSec, dateSec, timeInizioSec, timeFineSec, a);
+        }
 
        /*int inizioSec = Integer.parseInt(InizioSecretary.getText().toString());
        int inizio1Sec = Integer.parseInt(inizio1Secretary.getText().toString());
        int fineSec = Integer.parseInt(fineSecretary.getText().toString());
        int fine1Sec = Integer.parseInt(fine1Secretary.getText().toString());*/
-
-        String inizio = InizioSecretary.getText().toString() + ":" + inizio1Secretary.getText().toString();
-        String fine = fineSecretary.getText().toString() + ":" + fine1Secretary.getText().toString();
-        LocalTime timeInizioSec = LocalTime.parse(inizio);
-        LocalTime timeFineSec = LocalTime.parse(fine);
-        Controller c9 = new Controller();
-        c9.newP(nameAulaSec, typeSec, dateSec, timeInizioSec, timeFineSec, a);
     }
 }
