@@ -1,4 +1,4 @@
-package Entity;
+package Utils;
 
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;

@@ -1,6 +1,6 @@
 package DAO;
 
-import Entity.Classroom_Segretaria;
+import Utils.Classroom_Segretaria;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.TableColumn;

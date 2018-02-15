@@ -1,7 +1,6 @@
 package Boundary;
 
-import Entity.Classroom_Segretaria;
-import Entity.Professore;
+import Utils.Classroom_Segretaria;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;

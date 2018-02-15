@@ -1,10 +1,11 @@
 package Control;
 
+import Entity.Secretary;
 import Utils.saveFileprenotation;
 import DAO.*;
-import Entity.Classroom_ProfComplete;
-import Entity.Classroom_Professore;
-import Entity.Classroom_Segretaria;
+import Utils.Classroom_ProfComplete;
+import Utils.Classroom_Professore;
+import Utils.Classroom_Segretaria;
 import Entity.Professore;
 import javafx.application.Application;
 import javafx.collections.ObservableList;
@@ -87,6 +88,11 @@ public class Controller extends Application {
     public Professore createEntityProfessore(String u, String p) {
         return new Professore(u, p);
     }
+
+    public Secretary createEntitySecertary(String u, String p) {
+        return new Secretary(u, p);
+    }
+
 
     public Controller show(ObservableList<Classroom_Segretaria> data, TableView tableSecretary,
                            TableColumn columnAulaSecretary, TableColumn columnTipoSecretary,

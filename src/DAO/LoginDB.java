@@ -29,6 +29,7 @@ public class LoginDB {
                 case "1":
                     System.out.println("Sei una segretaria");
                     Controller c1 = new Controller();
+                    c1.createEntitySecertary(u, p);
                     c1.secrInterface(u, p);
                     break;
                 case "0":

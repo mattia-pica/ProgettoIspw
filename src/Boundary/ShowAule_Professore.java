@@ -1,6 +1,6 @@
 package Boundary;
 
-import Entity.Classroom_Professore;
+import Utils.Classroom_Professore;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;

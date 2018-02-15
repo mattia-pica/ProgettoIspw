@@ -1,7 +1,6 @@
 package DAO;
 
-import Entity.Classroom_Professore;
-import Entity.Classroom_Segretaria;
+import Utils.Classroom_Professore;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.TableColumn;
@@ -13,9 +12,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.time.LocalTime;
-import java.util.Date;
-
-import static com.oracle.jrockit.jfr.Transition.From;
 
 public class ShowDatabase_Prof {
 
