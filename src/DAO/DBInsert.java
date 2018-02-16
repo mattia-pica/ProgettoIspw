@@ -1,5 +1,6 @@
 package DAO;
 
+import Boundary.Duplicate_Key;
 import Utils.ClassicSingleton;
 import Control.Controller;
 import Entity.Professore;
@@ -32,8 +33,8 @@ public class DBInsert extends DB_Connection_Aule {
                 Statement statement = conn_Aule.createStatement();
                 ResultSet rs = statement.executeQuery(controlQuery);
                 if (rs.next()) {
-                    Controller c9 = new Controller();
-                    c9.duplicateKeyMessage();
+                    Duplicate_Key duplicate_key = new Duplicate_Key();
+                    duplicate_key.duplicateKeyMessage();
                 } else {
                     Professore professore = ClassicSingleton.getInstance().getProfessore();
 

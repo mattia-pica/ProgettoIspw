@@ -1,3 +1,4 @@
+import Boundary.LoginGUI;
 import Control.Controller;
 import javafx.application.Application;
 

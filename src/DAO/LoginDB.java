@@ -1,7 +1,11 @@
 package DAO;
 
+import Boundary.IncorrectLoginField;
+import Boundary.ShowAule_Professore;
+import Boundary.ShowAule_Segretaria;
 import Control.Controller;
 import Entity.Professore;
+import Utils.ClassicSingleton;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -31,19 +35,21 @@ public class LoginDB {
                     Controller c1 = new Controller();
                     c1.createEntitySecertary(u, p);
                     c1.newThread();
-                    c1.secrInterface(u, p);
+                    ShowAule_Segretaria showAule_segretaria = new ShowAule_Segretaria();
+                    showAule_segretaria.start();
                     break;
                 case "0":
                     System.out.println("Sei un professore, verrai reindirizzato fra 5 secondi");
                     Controller c5 = new Controller();
                     professore = c5.createEntityProfessore(u, p);
                     c5.newThread();
-                    c5.profInterface(u, p);
+                    ShowAule_Professore showAule_professore = new ShowAule_Professore();
+                    showAule_professore.profInterface(u);
                     break;
                 case "":
                 default:
-                    Controller c12 = new Controller();
-                    c12.incorrectLoginField();
+                    IncorrectLoginField incorrect = new IncorrectLoginField();
+                    incorrect.incorrectLoginField();
                     System.out.print("Login field incorrect!");
             }
         } catch (Exception e) {

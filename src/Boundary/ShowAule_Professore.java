@@ -1,12 +1,18 @@
 package Boundary;
 
+import Entity.Professore;
+import Utils.ClassicSingleton;
 import Utils.Classroom_Professore;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import Control.Controller;
+import javafx.stage.Stage;
 
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
@@ -26,36 +32,6 @@ public class ShowAule_Professore {
     private TextField oraInizioSearch;
     @FXML
     private TextField oraFineSearch;
-   /* @FXML
-    private Button btnSearch;
-    @FXML
-    private Button btnLoadProf;
-    @FXML
-    private TextField textAuleProf;
-    @FXML
-    private RadioButton rbSiProf;
-    @FXML
-    private RadioButton rbNoProf;
-    @FXML
-    private RadioButton rbEsameProf;
-    @FXML
-    private ToggleGroup groupTipo;
-    @FXML
-    private RadioButton rbConfProf;
-    @FXML
-    private DatePicker pickDateProf;
-    @FXML
-    private TextField textOraInizioProf;
-    @FXML
-    private Button btnConfirmProf;
-    @FXML
-    private TextField textOra1Prof;
-    @FXML
-    private Label showMes;
-    @FXML
-    private RadioButton rbAltroProf;
-    @FXML
-    private TextField textAltroProf;*/
     @FXML
     private TableColumn columnNameProf;
     @FXML
@@ -70,6 +46,15 @@ public class ShowAule_Professore {
     private ObservableList<Classroom_Professore> dataProf;
     @FXML
     private javafx.scene.control.TableView<Classroom_Professore> tableProf;
+
+    public void profInterface(String profName) throws Exception {
+        Stage thirdStage = new Stage();
+        Parent root = FXMLLoader.load(getClass().getResource("../Boundary/Aule_Professore.fxml"));
+        thirdStage.setTitle("Interface of" + profName + "(professor)");
+        thirdStage.setScene(new Scene(root, 488, 277));
+        thirdStage.setResizable(false);
+        thirdStage.show();
+    }
 
     public void loadDataFromDBProf(ActionEvent actionEvent){
 
@@ -97,8 +82,8 @@ public class ShowAule_Professore {
     }
     public void newPrenotation(ActionEvent actionEvent) throws Exception {
 
-        Controller c7 = new Controller();
-        c7.prenotationInterface();
+        PrenotationInterface prenotation = new PrenotationInterface();
+        prenotation.prenotationInterface();
         ((Node)(actionEvent.getSource())).getScene().getWindow().hide();
     }
 }

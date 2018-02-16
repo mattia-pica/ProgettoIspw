@@ -1,16 +1,22 @@
 package Boundary;
 
 import Utils.Classroom_Segretaria;
+import javafx.application.Application;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import Control.Controller;
+import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 
-public class ShowAule_Segretaria {
+public class ShowAule_Segretaria{
 
     @FXML
     private RadioButton rbAltroSecretary;
@@ -62,11 +68,20 @@ public class ShowAule_Segretaria {
     private javafx.scene.control.TableView<Classroom_Segretaria> tableSecretary;
 
 
+    public void start() throws Exception {
+
+        Stage secondStage = new Stage();
+        Parent root = FXMLLoader.load(getClass().getResource("../Boundary/Aule_Segretaria.fxml"));
+        secondStage.setTitle("Interface of (secretary)");
+        secondStage.setScene(new Scene(root, 600, 501));
+        secondStage.setResizable(false);
+        secondStage.show();
+
+    }
     public void loadDataFromDatabase(ActionEvent actionEvent) {
 
         Controller c3 = new Controller();
         c3.show(data, tableSecretary, columnAulaSecretary, columnTipoSecretary, columnDataSecretary, columnInizioSecretary, columnFineSecretary, columnFromSecretary);
-
     }
 
     public void newPrenotation(ActionEvent actionEvent){
@@ -104,4 +119,6 @@ public class ShowAule_Segretaria {
        int fineSec = Integer.parseInt(fineSecretary.getText().toString());
        int fine1Sec = Integer.parseInt(fine1Secretary.getText().toString());*/
     }
+
+
 }

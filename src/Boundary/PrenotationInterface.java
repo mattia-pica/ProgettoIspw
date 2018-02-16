@@ -5,8 +5,12 @@ import Utils.Classroom_Professore;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import Control.Controller;
+import javafx.stage.Stage;
 
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
@@ -51,6 +55,15 @@ public class PrenotationInterface {
     private ObservableList<Classroom_Professore> data;
     @FXML
     private ObservableList<Classroom_ProfComplete> newdata;
+
+    public void prenotationInterface() throws Exception {
+        Stage fourthStage = new Stage();
+        Parent root = FXMLLoader.load(getClass().getResource("../Boundary/prenotationInterface.fxml"));
+        fourthStage.setTitle("Prenota Aula");
+        fourthStage.setScene(new Scene(root, 678, 496));
+        fourthStage.setResizable(false);
+        fourthStage.show();
+    }
 
     public void prenota(ActionEvent actionEvent){
 

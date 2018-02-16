@@ -1,5 +1,6 @@
 package Control;
 
+import Boundary.LoginGUI;
 import Entity.Secretary;
 import Utils.*;
 import DAO.*;
@@ -13,68 +14,22 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.stage.Stage;
 
-import java.io.IOException;
 import java.time.LocalTime;
 
-public class Controller extends Application {
+public class Controller extends Application{
 
     //-------------------FXML LOADER-------------------//
 
+
     @Override
-    public void start(Stage primaryStage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("../Boundary/LoginGUI.fxml"));
-        primaryStage.setTitle("Classroom");
-        primaryStage.setScene(new Scene(root, 400, 205));
-        primaryStage.show();
+    public void start(Stage primaryStage) throws Exception{
+        LoginGUI loginGUI = new LoginGUI();
+        loginGUI.start();
     }
 
-    public void secrInterface(String u, String p) throws IOException {
-        Stage secondStage = new Stage();
-        Parent root = FXMLLoader.load(getClass().getResource("../Boundary/Aule_Segretaria.fxml"));
-        secondStage.setTitle("Interface of " + u + "(secretary)");
-        secondStage.setScene(new Scene(root, 600, 501));
-        secondStage.setResizable(false);
-        secondStage.show();
-    }
+    //--------------------Thread-----------------------//
 
-    public void profInterface(String s, String u) throws Exception {
-        Stage thirdStage = new Stage();
-        Parent root = FXMLLoader.load(getClass().getResource("../Boundary/Aule_Professore.fxml"));
-        thirdStage.setTitle("Interface of " + s + " (professor)");
-        thirdStage.setScene(new Scene(root, 488, 277));
-        thirdStage.setResizable(false);
-        thirdStage.show();
-    }
-
-    public void prenotationInterface() throws Exception {
-        Stage fourthStage = new Stage();
-        Parent root = FXMLLoader.load(getClass().getResource("../Boundary/prenotationInterface.fxml"));
-        fourthStage.setTitle("Prenota Aula");
-        fourthStage.setScene(new Scene(root, 678, 496));
-        fourthStage.setResizable(false);
-        fourthStage.show();
-    }
-
-    public void duplicateKeyMessage() throws Exception {
-
-        Stage fifthStage = new Stage();
-        Parent root = FXMLLoader.load(getClass().getResource("../Boundary/messageDuplicateKey.fxml"));
-        fifthStage.setTitle("Prenota Aula");
-        fifthStage.setScene(new Scene(root, 318, 123));
-        fifthStage.setResizable(false);
-        fifthStage.show();
-    }
-
-    public void incorrectLoginField() throws Exception {
-
-        Stage sixthStage = new Stage();
-        Parent root = FXMLLoader.load(getClass().getResource("../Boundary/loginIncorrect.fxml"));
-        sixthStage.setScene(new Scene(root, 318, 123));
-        sixthStage.setResizable(false);
-        sixthStage.show();
-    }
-
-    public Thread newThread(){
+    public Thread newThread() {
 
         Thread thread = new Thread(new CounterThread());
         thread.run();
@@ -82,13 +37,7 @@ public class Controller extends Application {
 
     }
 
-    //--------------METODI GENERICI------------------//
-
-    public Professore check(String u, String p) {
-        LoginDB loginDB = new LoginDB();
-        Professore professore = loginDB.log(u, p);
-        return professore;
-    }
+    //--------------ENTITY---------------------------//
 
     public Professore createEntityProfessore(String u, String p) {
         return new Professore(u, p);
@@ -98,6 +47,14 @@ public class Controller extends Application {
         return new Secretary(u, p);
     }
 
+    //--------------METODI GENERICI-------------------//
+
+
+    public Professore check(String u, String p) {
+        LoginDB loginDB = new LoginDB();
+        Professore professore = loginDB.log(u, p);
+        return professore;
+    }
 
     public Controller show(ObservableList<Classroom_Segretaria> data, TableView tableSecretary,
                            TableColumn columnAulaSecretary, TableColumn columnTipoSecretary,
@@ -138,5 +95,6 @@ public class Controller extends Application {
         saveFileprenotation saveFileprenotation = new saveFileprenotation();
         saveFileprenotation.write(nameAula, tipoPrenota, timeInizioPrenota, timeFinePrenota, nameProf, surnameProf);
     }
+
 
 }
