@@ -1,11 +1,8 @@
 package Control;
 
 import Entity.Secretary;
-import Utils.saveFileprenotation;
+import Utils.*;
 import DAO.*;
-import Utils.Classroom_ProfComplete;
-import Utils.Classroom_Professore;
-import Utils.Classroom_Segretaria;
 import Entity.Professore;
 import javafx.application.Application;
 import javafx.collections.ObservableList;
@@ -75,6 +72,14 @@ public class Controller extends Application {
         sixthStage.setScene(new Scene(root, 318, 123));
         sixthStage.setResizable(false);
         sixthStage.show();
+    }
+
+    public Thread newThread(){
+
+        Thread thread = new Thread(new CounterThread());
+        thread.run();
+        return thread;
+
     }
 
     //--------------METODI GENERICI------------------//

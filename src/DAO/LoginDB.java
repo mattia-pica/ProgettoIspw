@@ -27,15 +27,17 @@ public class LoginDB {
             }
             switch (type) {
                 case "1":
-                    System.out.println("Sei una segretaria");
+                    System.out.println("Sei una segretaria, verrai reindirizzato fra 5 secondi");
                     Controller c1 = new Controller();
                     c1.createEntitySecertary(u, p);
+                    c1.newThread();
                     c1.secrInterface(u, p);
                     break;
                 case "0":
-                    System.out.println("Sei un professore");
+                    System.out.println("Sei un professore, verrai reindirizzato fra 5 secondi");
                     Controller c5 = new Controller();
                     professore = c5.createEntityProfessore(u, p);
+                    c5.newThread();
                     c5.profInterface(u, p);
                     break;
                 case "":
