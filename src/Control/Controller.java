@@ -20,7 +20,6 @@ public class Controller extends Application{
 
     //-------------------FXML LOADER-------------------//
 
-
     @Override
     public void start(Stage primaryStage) throws Exception{
         LoginGUI loginGUI = new LoginGUI();
@@ -49,6 +48,13 @@ public class Controller extends Application{
 
     //--------------METODI GENERICI-------------------//
 
+    public void createSingleton(String u, String p){
+        ClassicSingleton singleton = ClassicSingleton.getInstance();
+        Professore professore = check(u, p);
+        singleton.setProfessore(professore);
+    }
+
+
 
     public Professore check(String u, String p) {
         LoginDB loginDB = new LoginDB();
@@ -56,45 +62,38 @@ public class Controller extends Application{
         return professore;
     }
 
-    public Controller show(ObservableList<Classroom_Segretaria> data, TableView tableSecretary,
+    public void show(ObservableList<Classroom_Segretaria> data, TableView tableSecretary,
                            TableColumn columnAulaSecretary, TableColumn columnTipoSecretary,
                            TableColumn columnDataSecretary, TableColumn columnInizioSecretary,
                            TableColumn columnFineSecretary, TableColumn columnFromSecretary) {
         ShowDatabase_Secr showDatabaseSecr = new ShowDatabase_Secr();
         showDatabaseSecr.show_secr(data, tableSecretary, columnAulaSecretary, columnTipoSecretary, columnDataSecretary,
                 columnInizioSecretary, columnFineSecretary, columnFromSecretary);
-        return null;
     }
 
-    public Controller show_p(ObservableList<Classroom_Professore> dataProf, TableView tableProf,
+    public void show_p(ObservableList<Classroom_Professore> dataProf, TableView tableProf,
                              TableColumn columnNameProf, LocalTime timeInizio, LocalTime timeFine, String dateSearch) {
         ShowDatabase_Prof showDatabase_prof = new ShowDatabase_Prof();
         showDatabase_prof.show_prof(dataProf, tableProf, columnNameProf, timeInizio, timeFine, dateSearch);
-        return null;
     }
 
-    public Controller show_p_complete(ObservableList<Classroom_ProfComplete> data, TableView tableProf,
+    public void show_p_complete(ObservableList<Classroom_ProfComplete> data, TableView tableProf,
                                       TableColumn columnNameProf, TableColumn columnTipoProf, TableColumn columnDataProf,
                                       TableColumn columnOraProf, TableColumn columnOra1Prof) {
         ShowCompleteDB_Prof showCompleteDB_prof = new ShowCompleteDB_Prof();
         showCompleteDB_prof.show_completeDB(data, tableProf, columnNameProf, columnDataProf, columnTipoProf,
                 columnOraProf, columnOra1Prof);
-        return null;
     }
 
-    public Controller newP(String nameAula, String tipoPrenota, String dataPrenota, LocalTime timeInizioPrenota,
+    public void newP(String nameAula, String tipoPrenota, String dataPrenota, LocalTime timeInizioPrenota,
                            LocalTime timeFinePrenota, boolean a) {
         DBInsert dbInsert = new DBInsert();
         dbInsert.insert(nameAula, tipoPrenota, dataPrenota, timeInizioPrenota, timeFinePrenota, a);
-        return null;
     }
 
     public void write(String nameAula, String tipoPrenota, LocalTime timeInizioPrenota, LocalTime timeFinePrenota,
                       String nameProf, String surnameProf) throws Exception {
-
         saveFileprenotation saveFileprenotation = new saveFileprenotation();
         saveFileprenotation.write(nameAula, tipoPrenota, timeInizioPrenota, timeFinePrenota, nameProf, surnameProf);
     }
-
-
 }

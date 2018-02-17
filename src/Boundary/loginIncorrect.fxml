@@ -4,10 +4,9 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="154.0" prefWidth="257.0" xmlns="http://javafx.com/javafx/8.0.141" fx:controller="Boundary.IncorrectLoginField" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="154.0" prefWidth="257.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Boundary.IncorrectLoginField">
    <children>
-      <Label layoutX="29.0" fx:id="message" layoutY="55.0" text="Nome utente o password errati!" />
-      <Button layoutX="115.0" fx:id="btnTurnBack" layoutY="100.0" mnemonicParsing="false" onAction="#turnToLogin" text="OK" />
+      <Label fx:id="message" layoutX="29.0" layoutY="61.0" text="Nome utente o password errati!" />
+      <Button fx:id="btnTurnBack" mnemonicParsing="false" onAction="#turnToLogin" text="OK" AnchorPane.bottomAnchor="28.0" AnchorPane.leftAnchor="115.0" AnchorPane.rightAnchor="105.0" AnchorPane.topAnchor="100.0" />
    </children>
 </AnchorPane>

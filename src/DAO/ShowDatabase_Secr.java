@@ -1,5 +1,7 @@
 package DAO;
 
+import Entity.Professore;
+import Utils.ClassicSingleton;
 import Utils.Classroom_Segretaria;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;

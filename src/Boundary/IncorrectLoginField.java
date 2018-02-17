@@ -21,7 +21,7 @@ public class IncorrectLoginField {
 
         Stage sixthStage = new Stage();
         Parent root = FXMLLoader.load(getClass().getResource("../Boundary/loginIncorrect.fxml"));
-        sixthStage.setScene(new Scene(root, 318, 123));
+        sixthStage.setScene(new Scene(root, 257, 154));
         sixthStage.setResizable(false);
         sixthStage.show();
     }
