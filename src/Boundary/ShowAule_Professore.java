@@ -2,7 +2,9 @@ package Boundary;
 
 import Entity.Professore;
 import Utils.ClassicSingleton;
+import Utils.Classroom_ProfComplete;
 import Utils.Classroom_Professore;
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -12,6 +14,8 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import Control.Controller;
+import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 import java.time.LocalTime;
@@ -33,27 +37,46 @@ public class ShowAule_Professore {
     @FXML
     private TextField oraFineSearch;
     @FXML
-    private TableColumn columnNameProf;
+    private javafx.scene.control.TableView<Classroom_Professore> table = new TableView<>();
     @FXML
-    private TableColumn columnTipoProf;
+    private TableColumn<Classroom_Professore, String> columnNome = new TableColumn<>("nome");
     @FXML
-    private TableColumn columnDataProf;
+    private static ObservableList<Classroom_Professore> F = FXCollections.observableArrayList();
     @FXML
-    private TableColumn columnOraProf;
-    @FXML
-    private TableColumn columnOra1Prof;
-    @FXML
-    private ObservableList<Classroom_Professore> dataProf;
-    @FXML
-    private javafx.scene.control.TableView<Classroom_Professore> tableProf;
+    private static String roomnome;
+
 
     public void profInterface(String profName) throws Exception {
         Stage thirdStage = new Stage();
-        Parent root = FXMLLoader.load(getClass().getResource("../Boundary/Aule_Professore.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("../Boundary/Aule_Professore.fxml"));
+        AnchorPane root = loader.load();
         thirdStage.setTitle("Interface of" + profName + "(professor)");
-        thirdStage.setScene(new Scene(root, 488, 277));
-        thirdStage.setResizable(false);
+        Scene scene = new Scene(root, 436, 275);
+        //thirdStage.setScene(new Scene(root, 488, 277));
+
+        columnNome.setMinWidth(140);
+        columnNome.setCellValueFactory(new PropertyValueFactory<>("nome"));
+
+        table.setPrefSize(140, 247);
+        table.setLayoutX(10);
+        table.setLayoutY(10);
+
+        ((AnchorPane) scene.getRoot()).getChildren().addAll(table);
+
+
+        table.setItems(F);
+        table.getColumns().addAll(columnNome);
+        thirdStage.setScene(scene);
         thirdStage.show();
+    }
+
+    public void parseRoom(String nome){
+        roomnome=nome;
+
+
+        F.add(new Classroom_Professore(roomnome));
+        columnNome.setCellValueFactory(new PropertyValueFactory<>("nome"));
+        table.setItems(F);
     }
 
     public void loadDataFromDBProf(ActionEvent actionEvent){
@@ -78,7 +101,7 @@ public class ShowAule_Professore {
         Date timeFine = sdf.parse(due);*/
 
         Controller c6 = new Controller();
-        c6.show_p(dataProf, tableProf,  columnNameProf, timeInizio, timeFine, dateSearch);
+        c6.show_p(timeInizio, timeFine, dateSearch);
     }
     public void newPrenotation(ActionEvent actionEvent) throws Exception {
 

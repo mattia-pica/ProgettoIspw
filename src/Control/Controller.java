@@ -1,20 +1,22 @@
 package Control;
 
 import Boundary.LoginGUI;
+import Boundary.PrenotationInterface;
+import Boundary.ShowAule_Professore;
+import Entity.Disponible_Room;
+import Entity.Room;
 import Entity.Secretary;
 import Utils.*;
 import DAO.*;
 import Entity.Professore;
 import javafx.application.Application;
 import javafx.collections.ObservableList;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.stage.Stage;
 
 import java.time.LocalTime;
+import java.util.ArrayList;
 
 public class Controller extends Application{
 
@@ -71,18 +73,23 @@ public class Controller extends Application{
                 columnInizioSecretary, columnFineSecretary, columnFromSecretary);
     }
 
-    public void show_p(ObservableList<Classroom_Professore> dataProf, TableView tableProf,
-                             TableColumn columnNameProf, LocalTime timeInizio, LocalTime timeFine, String dateSearch) {
-        ShowDatabase_Prof showDatabase_prof = new ShowDatabase_Prof();
-        showDatabase_prof.show_prof(dataProf, tableProf, columnNameProf, timeInizio, timeFine, dateSearch);
+    public void show_p(LocalTime timeInizio, LocalTime timeFine, String dateSearch) {
+        ArrayList<Disponible_Room> R;
+        R = ShowDatabase_Prof.show_prof(timeInizio, timeFine, dateSearch);
+        ShowAule_Professore showAule_professore = new ShowAule_Professore();
+        for (Disponible_Room room : R){
+            showAule_professore.parseRoom(room.getNome());
+
+        }
     }
 
-    public void show_p_complete(ObservableList<Classroom_ProfComplete> data, TableView tableProf,
-                                      TableColumn columnNameProf, TableColumn columnTipoProf, TableColumn columnDataProf,
-                                      TableColumn columnOraProf, TableColumn columnOra1Prof) {
-        ShowCompleteDB_Prof showCompleteDB_prof = new ShowCompleteDB_Prof();
-        showCompleteDB_prof.show_completeDB(data, tableProf, columnNameProf, columnDataProf, columnTipoProf,
-                columnOraProf, columnOra1Prof);
+    public void show_p_complete() {
+        ArrayList<Room> R;
+        R = ShowCompleteDB_Prof.show_completeDB();
+        PrenotationInterface pi = new PrenotationInterface();
+        for (Room room : R) {
+            pi.parseRoom(room.getNome(), room.getTipopr(), room.getDatapr(), room.getInizio(), room.getFine(), room.getFromp());
+        }
     }
 
     public void newP(String nameAula, String tipoPrenota, String dataPrenota, LocalTime timeInizioPrenota,

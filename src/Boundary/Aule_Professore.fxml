@@ -3,33 +3,22 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane fx:id="textOraFine" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="247.0" prefWidth="488.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Boundary.ShowAule_Professore">
+<AnchorPane fx:id="textOraFine" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="272.0" prefWidth="436.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Boundary.ShowAule_Professore">
    <children>
-      <TableView fx:id="tableProf" layoutX="19.0" layoutY="14.0" prefHeight="200.0" prefWidth="151.0">
-         <columns>
-            <TableColumn fx:id="columnNameProf" prefWidth="150.0" text="NOME AULA" />
-            <TableColumn fx:id="columnTipoProf" minWidth="0.0" prefWidth="115.0" text="TIPO PR" visible="false" />
-            <TableColumn fx:id="columnDataProf" minWidth="0.0" prefWidth="134.0" text="DATA PR" visible="false" />
-            <TableColumn fx:id="columnOraProf" minWidth="0.0" prefWidth="113.0" text="ORA Inizio" visible="false" />
-            <TableColumn fx:id="columnOra1Prof" minWidth="0.0" prefWidth="81.0" text="ORA Fine" visible="false" />
-         </columns>
-      </TableView>
-      <Button fx:id="btnLoadProf" layoutX="220.0" layoutY="158.0" mnemonicParsing="false" onAction="#loadDataFromDBProf" prefHeight="26.0" prefWidth="222.0" text="Visualizza Aule Disponibili" />
-      <DatePicker fx:id="datePickerSearch" layoutX="301.0" layoutY="9.0" prefHeight="26.0" prefWidth="136.0" />
-      <TextField fx:id="oraInizioSearch" layoutX="301.0" layoutY="59.0" prefHeight="26.0" prefWidth="42.0" />
-      <TextField fx:id="oraFineSearch" layoutX="301.0" layoutY="109.0" prefHeight="26.0" prefWidth="42.0" />
-      <Label layoutX="226.0" layoutY="14.0" text="Data" />
-      <Label layoutX="213.0" layoutY="64.0" text="Ora inzio" />
-      <Label layoutX="216.0" layoutY="114.0" text="Ora fine" />
-      <Label layoutX="343.0" layoutY="64.0" text=":" />
-      <Label layoutX="343.0" layoutY="114.0" text=":" />
-      <TextField fx:id="oraInizioSearch1" layoutX="348.0" layoutY="59.0" prefHeight="26.0" prefWidth="42.0" />
-      <TextField fx:id="oraFineSearch1" layoutX="348.0" layoutY="109.0" prefHeight="26.0" prefWidth="42.0" />
-      <Button layoutX="281.0" layoutY="201.0" mnemonicParsing="false" onAction="#newPrenotation" text="Inserisci Prenotazione" />
+      <Button fx:id="btnLoadProf" layoutX="179.0" layoutY="163.0" mnemonicParsing="false" onAction="#loadDataFromDBProf" prefHeight="26.0" prefWidth="222.0" text="Visualizza Aule Disponibili" />
+      <DatePicker fx:id="datePickerSearch" layoutX="260.0" layoutY="14.0" prefHeight="26.0" prefWidth="136.0" />
+      <TextField fx:id="oraInizioSearch" layoutX="260.0" layoutY="64.0" prefHeight="26.0" prefWidth="42.0" />
+      <TextField fx:id="oraFineSearch" layoutX="260.0" layoutY="114.0" prefHeight="26.0" prefWidth="42.0" />
+      <Label layoutX="185.0" layoutY="19.0" text="Data" />
+      <Label layoutX="172.0" layoutY="69.0" text="Ora inzio" />
+      <Label layoutX="175.0" layoutY="119.0" text="Ora fine" />
+      <Label layoutX="302.0" layoutY="69.0" text=":" />
+      <Label layoutX="302.0" layoutY="119.0" text=":" />
+      <TextField fx:id="oraInizioSearch1" layoutX="307.0" layoutY="64.0" prefHeight="26.0" prefWidth="42.0" />
+      <TextField fx:id="oraFineSearch1" layoutX="307.0" layoutY="114.0" prefHeight="26.0" prefWidth="42.0" />
+      <Button layoutX="240.0" layoutY="206.0" mnemonicParsing="false" onAction="#newPrenotation" text="Inserisci Prenotazione" />
    </children>
 </AnchorPane>

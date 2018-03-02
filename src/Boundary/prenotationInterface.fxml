@@ -4,8 +4,6 @@
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.RadioButton?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -34,15 +32,6 @@
       <TextField fx:id="textAltroProf" layoutX="322.0" layoutY="292.0" promptText="Altro" />
       <Label layoutX="145.0" layoutY="378.0" text=":" />
       <Label layoutX="145.0" layoutY="412.0" text=":" />
-      <TableView fx:id="tableProf" layoutX="29.0" layoutY="24.0" prefHeight="200.0" prefWidth="633.0">
-         <columns>
-            <TableColumn fx:id="columnNameProf" prefWidth="126.0" text="NOME AULA" />
-            <TableColumn fx:id="columnTipoProf" minWidth="0.0" prefWidth="139.0" text="TIPO PR" />
-            <TableColumn fx:id="columnDataProf" minWidth="0.0" prefWidth="134.0" text="DATA PR" />
-            <TableColumn fx:id="columnOraProf" minWidth="0.0" prefWidth="113.0" text="ORA Inizio" />
-            <TableColumn fx:id="columnOra1Prof" minWidth="0.0" prefWidth="120.0" text="ORA Fine" />
-         </columns>
-      </TableView>
       <Button fx:id="showAuleByUser" layoutX="204.0" layoutY="457.0" mnemonicParsing="false" onAction="#show_complete_prof" text="Mie Prenotazioni" />
       <RadioButton fx:id="rbAltroProf" layoutX="239.0" layoutY="296.0" mnemonicParsing="false" text="Altro" toggleGroup="$GROUP" />
    </children>

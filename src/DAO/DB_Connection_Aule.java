@@ -10,7 +10,7 @@ public class DB_Connection_Aule {
     public static Connection conn_Aule;
     public Connection connect_Aule() {
 
-        final String url = "jdbc:mysql://localhost:3306/Aule";
+        final String url = "jdbc:mysql://localhost:3306/dbEsame";
         final String user = "root";
         final String password = "trottola12";
 

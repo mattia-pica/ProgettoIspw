@@ -2,6 +2,7 @@ package Boundary;
 
 import Utils.Classroom_ProfComplete;
 import Utils.Classroom_Professore;
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -10,6 +11,8 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import Control.Controller;
+import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 import java.time.LocalTime;
@@ -40,29 +43,84 @@ public class PrenotationInterface {
     @FXML
     private TextField textOra1Prof1;
     @FXML
-    private TableView tableProf;
+    private javafx.scene.control.TableView<Classroom_ProfComplete> table = new TableView<>();
     @FXML
-    private TableColumn columnNameProf;
+    private TableColumn<Classroom_ProfComplete, String> columnNome = new TableColumn<>("nome");
     @FXML
-    private TableColumn columnTipoProf;
+    private TableColumn<Classroom_ProfComplete, String> columnTipoPr = new TableColumn<>("tipopr");
     @FXML
-    private TableColumn columnDataProf;
+    private TableColumn<Classroom_ProfComplete, String> columnDataPr = new TableColumn<>("datapr");
     @FXML
-    private TableColumn columnOraProf;
+    private TableColumn<Classroom_ProfComplete, String> columnInizio = new TableColumn<>("inizio");
     @FXML
-    private TableColumn columnOra1Prof;
+    private TableColumn<Classroom_ProfComplete, String> columnFine = new TableColumn<>("fine");
+    /*@FXML
+    private TableColumn<Classroom_ProfComplete, String> columnFromP = new TableColumn<>("fromp");*/
     @FXML
-    private ObservableList<Classroom_Professore> data;
+    private static ObservableList<Classroom_ProfComplete> D = FXCollections.observableArrayList();
     @FXML
-    private ObservableList<Classroom_ProfComplete> newdata;
+    private static String roomnome;
+    @FXML
+    private static String roomtipopr;
+    @FXML
+    private static String roomdatapr;
+    @FXML
+    private static String roominizio;
+    @FXML
+    private static String roomfine;
+    @FXML
+    private static String roomfromp;
 
     public void prenotationInterface() throws Exception {
         Stage fourthStage = new Stage();
-        Parent root = FXMLLoader.load(getClass().getResource("../Boundary/prenotationInterface.fxml"));
-        fourthStage.setTitle("Prenota Aula");
-        fourthStage.setScene(new Scene(root, 678, 496));
-        fourthStage.setResizable(false);
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("../Boundary/prenotationInterface.fxml"));
+        AnchorPane root = loader.load();
+        Scene scene = new Scene(root, 678, 496);
+
+        columnNome.setMinWidth(150);
+        columnNome.setCellValueFactory(new PropertyValueFactory<>("nome"));
+
+        columnTipoPr.setMinWidth(150);
+        columnTipoPr.setCellValueFactory(new PropertyValueFactory<>("tipopr"));
+
+        columnDataPr.setMinWidth(150);
+        columnDataPr.setCellValueFactory(new PropertyValueFactory<>("datapr"));
+
+        columnInizio.setMinWidth(150);
+        columnInizio.setCellValueFactory(new PropertyValueFactory<>("inizio"));
+
+        columnFine.setMinWidth(150);
+        columnFine.setCellValueFactory(new PropertyValueFactory<>("fine"));
+
+        /*columnFromP.setMinWidth(150);
+        columnFromP.setCellValueFactory(new PropertyValueFactory<>("fromp"));*/
+
+        table.setItems(D);
+        table.getColumns().addAll(columnNome, columnTipoPr, columnDataPr, columnInizio, columnFine/*, columnFromP*/);
+        ((AnchorPane) scene.getRoot()).getChildren().addAll(table);
+
+        fourthStage.setScene(scene);
+       // fourthStage.setResizable(false);
         fourthStage.show();
+    }
+
+    public void parseRoom(String nome, String tipopr, String datapr, String inizio, String fine, String fromp){
+        roomnome = nome;
+        roomtipopr = tipopr;
+        roomdatapr = datapr;
+        roominizio = inizio;
+        roomfine = fine;
+        roomfromp = fromp;
+
+        D.add(new Classroom_ProfComplete(roomnome, roomtipopr, roomdatapr, roominizio, roomfine, roomfromp));
+
+        columnNome.setCellValueFactory(new PropertyValueFactory<>("nome"));
+        columnTipoPr.setCellValueFactory(new PropertyValueFactory<>("tipopr"));
+        columnDataPr.setCellValueFactory(new PropertyValueFactory<>("datapr"));
+        columnInizio.setCellValueFactory(new PropertyValueFactory<>("inizio"));
+        columnFine.setCellValueFactory(new PropertyValueFactory<>("fine"));
+        //columnFromP.setCellValueFactory(new PropertyValueFactory<>("fromp"));
+        table.setItems(D);
     }
 
     public void prenota(ActionEvent actionEvent){
@@ -95,7 +153,7 @@ public class PrenotationInterface {
     public void show_complete_prof(ActionEvent actionEvent) {
 
         Controller controller = new Controller();
-        controller.show_p_complete(newdata, tableProf, columnNameProf, columnTipoProf, columnDataProf, columnOraProf, columnOra1Prof);
+        controller.show_p_complete();
 
     }
 }
