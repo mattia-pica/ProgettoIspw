@@ -1,6 +1,7 @@
 package DAO;
 
 import Entity.Professore;
+import Entity.Room;
 import Utils.ClassicSingleton;
 import Utils.Classroom_Segretaria;
 import javafx.collections.FXCollections;
@@ -12,14 +13,15 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 
 public class ShowDatabase_Secr {
 
-    public void show_secr(ObservableList<Classroom_Segretaria> data, TableView tableSecretary, TableColumn columnAulaSecretary, TableColumn columnTipoSecretary, TableColumn columnDataSecretary, TableColumn columnInizioSecretary, TableColumn columnFineSecretary, TableColumn columnFromSecretary) {
+    public static ArrayList<Room> show_secr() {
 
         DB_Connection_Aule connection = new DB_Connection_Aule();
-        Connection connection1 = connection.connect_Aule();
-        String query = "SELECT * FROM Aule.dati";
+        Connection connection3 = connection.connect_Aule();
+        ArrayList<Room> Classrooms = new ArrayList<Room>();
 
         //-----------------MODIFICABILITÀ DELLE CELLE
 
@@ -32,27 +34,20 @@ public class ShowDatabase_Secr {
         //---------------------------------------------
 
         try {
-            data = FXCollections.observableArrayList();
-            Statement statement = connection1.createStatement();
-            ResultSet rs = statement.executeQuery(query);
+
+            ResultSet rs = connection3.createStatement().executeQuery("SELECT * FROM dbEsame.Aule");
             while (rs.next()) {
-                data.add(new Classroom_Segretaria(rs.getString("Nome"), rs.getString("TipoPr"),
+                Classrooms.add(new Room(rs.getString("Nome"), rs.getString("TipoPr"),
                         rs.getString("DataPr"), rs.getString("Inizio"), rs.getString("Fine"),
                         rs.getString("FromP")));
             }
-            statement.close();
+            connection3.close();
         } catch (SQLException e) {
             System.err.println("Error" + e);
         }
-        columnAulaSecretary.setCellValueFactory(new PropertyValueFactory<>("name"));
-        columnTipoSecretary.setCellValueFactory(new PropertyValueFactory<>("tipo"));
-        columnDataSecretary.setCellValueFactory(new PropertyValueFactory<>("data"));
-        columnInizioSecretary.setCellValueFactory(new PropertyValueFactory<>("ora"));
-        columnFineSecretary.setCellValueFactory(new PropertyValueFactory<>("ora1"));
-        columnFromSecretary.setCellValueFactory(new PropertyValueFactory<>("from"));
 
-        tableSecretary.setItems(null);
-        tableSecretary.setItems(data);
+        return Classrooms;
+
     }
 }
 

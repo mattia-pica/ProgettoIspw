@@ -1,7 +1,10 @@
 package Boundary;
 
+import Utils.Classroom_ProfComplete;
+import Utils.Classroom_Professore;
 import Utils.Classroom_Segretaria;
 import javafx.application.Application;
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -10,6 +13,8 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import Control.Controller;
+import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -49,39 +54,101 @@ public class ShowAule_Segretaria{
     @FXML
     private TextField fine1Secretary;
     @FXML
-    private TableColumn columnAulaSecretary;
-    @FXML
-    private TableColumn columnTipoSecretary;
-    @FXML
-    private TableColumn columnDataSecretary;
-    @FXML
-    private TableColumn columnInizioSecretary;
-    @FXML
-    private TableColumn columnFineSecretary;
-    @FXML
-    private TableColumn columnFromSecretary;
-    @FXML
     private Button btnSearch;
     @FXML
-    private ObservableList<Classroom_Segretaria> data;
+    private javafx.scene.control.TableView<Classroom_Segretaria> table = new TableView<>();
     @FXML
-    private javafx.scene.control.TableView<Classroom_Segretaria> tableSecretary;
+    private TableColumn<Classroom_Segretaria, String> columnNome = new TableColumn<>("nome");
+    @FXML
+    private TableColumn<Classroom_Segretaria, String> columnTipoPr = new TableColumn<>("tipopr");
+    @FXML
+    private TableColumn<Classroom_Segretaria, String> columnDataPr = new TableColumn<>("datapr");
+    @FXML
+    private TableColumn<Classroom_Segretaria, String> columnInizio = new TableColumn<>("inizio");
+    @FXML
+    private TableColumn<Classroom_Segretaria, String> columnFine = new TableColumn<>("fine");
+    @FXML
+    private TableColumn<Classroom_Segretaria, String> columnFromP = new TableColumn<>("fromp");
+    @FXML
+    private static ObservableList<Classroom_Segretaria> S = FXCollections.observableArrayList();
 
+    @FXML
+    private static String roomnome;
+    @FXML
+    private static String roomtipopr;
+    @FXML
+    private static String roomdatapr;
+    @FXML
+    private static String roominizio;
+    @FXML
+    private static String roomfine;
+    @FXML
+    private static String roomfromp;
 
     public void start() throws Exception {
 
         Stage secondStage = new Stage();
-        Parent root = FXMLLoader.load(getClass().getResource("../Boundary/Aule_Segretaria.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("../Boundary/Aule_Segretaria.fxml"));
+        AnchorPane root = loader.load();
         secondStage.setTitle("Interface of (secretary)");
-        secondStage.setScene(new Scene(root, 600, 501));
+        Scene scene = new Scene(root, 800, 501);
+
+
+        columnNome.setMinWidth(130);
+        columnNome.setCellValueFactory(new PropertyValueFactory<>("nome"));
+
+        columnTipoPr.setMinWidth(130);
+        columnTipoPr.setCellValueFactory(new PropertyValueFactory<>("tipopr"));
+
+        columnDataPr.setMinWidth(130);
+        columnDataPr.setCellValueFactory(new PropertyValueFactory<>("datapr"));
+
+        columnInizio.setMinWidth(130);
+        columnInizio.setCellValueFactory(new PropertyValueFactory<>("inizio"));
+
+        columnFine.setMinWidth(130);
+        columnFine.setCellValueFactory(new PropertyValueFactory<>("fine"));
+
+        columnFromP.setMinWidth(130);
+        columnFromP.setCellValueFactory(new PropertyValueFactory<>("fromp"));
+
+        table.setItems(S);
+        table.setPrefSize(780, 223);
+        table.setLayoutY(10);
+        table.setLayoutX(10);
+        table.getColumns().addAll(columnNome, columnTipoPr, columnDataPr, columnInizio, columnFine, columnFromP);
+        ((AnchorPane) scene.getRoot()).getChildren().addAll(table);
+
+
+        secondStage.setScene(scene);
         secondStage.setResizable(false);
         secondStage.show();
 
     }
+
+    public void parseRoom(String nome, String tipopr, String datapr, String inizio, String fine, String fromp){
+        roomnome = nome;
+        roomtipopr = tipopr;
+        roomdatapr = datapr;
+        roominizio = inizio;
+        roomfine = fine;
+        roomfromp = fromp;
+
+        S.add(new Classroom_Segretaria(roomnome, roomtipopr, roomdatapr, roominizio, roomfine, roomfromp));
+
+        columnNome.setCellValueFactory(new PropertyValueFactory<>("nome"));
+        columnTipoPr.setCellValueFactory(new PropertyValueFactory<>("tipopr"));
+        columnDataPr.setCellValueFactory(new PropertyValueFactory<>("datapr"));
+        columnInizio.setCellValueFactory(new PropertyValueFactory<>("inizio"));
+        columnFine.setCellValueFactory(new PropertyValueFactory<>("fine"));
+        columnFromP.setCellValueFactory(new PropertyValueFactory<>("fromp"));
+        table.setItems(S);
+    }
+
     public void loadDataFromDatabase(ActionEvent actionEvent) {
 
         Controller c3 = new Controller();
-        c3.show(data, tableSecretary, columnAulaSecretary, columnTipoSecretary, columnDataSecretary, columnInizioSecretary, columnFineSecretary, columnFromSecretary);
+        c3.show();
     }
 
     public void newPrenotation(ActionEvent actionEvent){

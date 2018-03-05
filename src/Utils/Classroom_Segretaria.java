@@ -7,79 +7,93 @@ import javafx.scene.control.TableColumn;
 
 public class Classroom_Segretaria {
 
-    @FXML
-    private javafx.scene.control.TableView<Classroom_Segretaria> table;
-    @FXML
-    private TableColumn<Classroom_Segretaria, String> columnAulaSecretary;
-    @FXML
-    private TableColumn<Classroom_Segretaria, String> columnTipoSecretary;
-    @FXML
-    private TableColumn<Classroom_Segretaria, String> columnDataSecretary;
-    @FXML
-    private TableColumn<Classroom_Segretaria, String> columnInizioSecretary;
-    @FXML
-    private TableColumn<Classroom_Segretaria, String> columnFineSecretary;
-    @FXML
-    private TableColumn<Classroom_Segretaria, String> columnFromSecretary;
-    @FXML
-
-    private StringProperty name;
-    private StringProperty tipo;
-    private StringProperty data;
-    private StringProperty ora;
-    private StringProperty ora1;
-    private StringProperty from;
-
-    public Classroom_Segretaria(String name, String tipo, String data, String ora, String ora1, String from) {
-        this.name = new SimpleStringProperty(name);
-        this.tipo = new SimpleStringProperty(tipo);
-        this.data = new SimpleStringProperty(data);
-        this.ora = new SimpleStringProperty(ora);
-        this.ora1 = new SimpleStringProperty(ora1);
-        this.from = new SimpleStringProperty(from);
-    }
-    public String getName(){return name.get();}
-    public String getTipo(){return tipo.get();}
-    public String getData(){return data.get();}
-    public String getOra(){return ora.get();}
-    public String getOra1(){return ora1.get();}
-    public String getFrom(){return from.get();}
-
-    public void setName(String value){
-        name.set(value);
-    }
-    public void setTipo(String value){
-        tipo.set(value);
-    }
-    public void setData(String value) {
-        data.set(value);
-    }
-    public void setOra(String value) {
-        ora.set(value);
-    }
-    public void setOra1(String value) {
-        ora1.set(value);
-    }
-    public void setFrom(String value) {
-        from.set(value);
+    public String getNome() {
+        return nome.get();
     }
 
-    public StringProperty tipoProperty() {
-        return tipo;
+    public StringProperty nomeProperty() {
+        return nome;
     }
-    public StringProperty nameProperty(){
-        return name;
+
+    public void setNome(String nome) {
+        this.nome.set(nome);
     }
-    public StringProperty oraProperty() {
-        return ora;
+
+    public String getTipopr() {
+        return tipopr.get();
     }
-    public StringProperty ora1Property() {
-        return ora1;
+
+    public StringProperty tipoprProperty() {
+        return tipopr;
     }
-    public StringProperty dataProperty() {
-        return data;
+
+    public void setTipopr(String tipopr) {
+        this.tipopr.set(tipopr);
     }
-    public StringProperty fromProperty() {
-        return from;
+
+    public String getDatapr() {
+        return datapr.get();
     }
+
+    public StringProperty dataprProperty() {
+        return datapr;
+    }
+
+    public void setDatapr(String datapr) {
+        this.datapr.set(datapr);
+    }
+
+    public String getInizio() {
+        return inizio.get();
+    }
+
+    public StringProperty inizioProperty() {
+        return inizio;
+    }
+
+    public void setInizio(String inizio) {
+        this.inizio.set(inizio);
+    }
+
+    public String getFine() {
+        return fine.get();
+    }
+
+    public StringProperty fineProperty() {
+        return fine;
+    }
+
+    public void setFine(String fine) {
+        this.fine.set(fine);
+    }
+
+    public String getFromp() {
+        return fromp.get();
+    }
+
+    public StringProperty frompProperty() {
+        return fromp;
+    }
+
+    public void setFromp(String fromp) {
+        this.fromp.set(fromp);
+    }
+
+    public Classroom_Segretaria(String nome, String tipopr, String datapr, String inizio, String fine, String fromp) {
+        this.nome = new SimpleStringProperty(nome);
+        this.tipopr = new SimpleStringProperty(tipopr);
+        this.datapr = new SimpleStringProperty(datapr);
+        this.inizio = new SimpleStringProperty(inizio);
+        this.fine = new SimpleStringProperty(fine);
+        this.fromp = new SimpleStringProperty(fromp);
+    }
+
+    private StringProperty nome;
+    private StringProperty tipopr;
+    private StringProperty datapr;
+    private StringProperty inizio;
+    private StringProperty fine;
+    private StringProperty fromp;
+
+
 }

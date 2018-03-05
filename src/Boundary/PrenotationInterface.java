@@ -15,6 +15,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
+import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 
@@ -77,25 +78,28 @@ public class PrenotationInterface {
         AnchorPane root = loader.load();
         Scene scene = new Scene(root, 678, 496);
 
-        columnNome.setMinWidth(150);
+        columnNome.setMinWidth(130);
         columnNome.setCellValueFactory(new PropertyValueFactory<>("nome"));
 
-        columnTipoPr.setMinWidth(150);
+        columnTipoPr.setMinWidth(130);
         columnTipoPr.setCellValueFactory(new PropertyValueFactory<>("tipopr"));
 
-        columnDataPr.setMinWidth(150);
+        columnDataPr.setMinWidth(130);
         columnDataPr.setCellValueFactory(new PropertyValueFactory<>("datapr"));
 
-        columnInizio.setMinWidth(150);
+        columnInizio.setMinWidth(130);
         columnInizio.setCellValueFactory(new PropertyValueFactory<>("inizio"));
 
-        columnFine.setMinWidth(150);
+        columnFine.setMinWidth(130);
         columnFine.setCellValueFactory(new PropertyValueFactory<>("fine"));
 
         /*columnFromP.setMinWidth(150);
         columnFromP.setCellValueFactory(new PropertyValueFactory<>("fromp"));*/
 
         table.setItems(D);
+        table.setPrefSize(661, 223);
+        table.setLayoutY(10);
+        table.setLayoutX(10);
         table.getColumns().addAll(columnNome, columnTipoPr, columnDataPr, columnInizio, columnFine/*, columnFromP*/);
         ((AnchorPane) scene.getRoot()).getChildren().addAll(table);
 
@@ -127,10 +131,16 @@ public class PrenotationInterface {
 
         boolean a = false;
         String nameAula = "Aula " + textAuleProf.getText().toString();
+        String c = "10/10/2010";
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        LocalDate localDate = LocalDate.parse(c, formatter);
+        pickDateProf.setValue(localDate);
+
         String dataPrenota = pickDateProf.getValue().format(DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+        System.out.println(dataPrenota);
         String inizioPrenota = textOraInizioProf.getText().toString() + ":" + textOraInizioProf1.getText().toString();
         String finePrenota = textOra1Prof.getText().toString() + ":" + textOra1Prof1.getText().toString();
-        String tipoPrenota=null;
+        String tipoPrenota="";
 
         if(rbEsameProf.isSelected()) tipoPrenota = "Esame";
         else if (rbConfProf.isSelected()) tipoPrenota= "Conferenza";
@@ -139,8 +149,7 @@ public class PrenotationInterface {
         if (rbAltroProf.isSelected()){
             tipoPrenota=textAltroProf.getText().toString();
         }
-        if(nameAula.isEmpty() || dataPrenota.isEmpty() || inizioPrenota.isEmpty()
-                || finePrenota.isEmpty() || tipoPrenota.isEmpty()) {
+        if(nameAula.equals("Aula") || dataPrenota.equals("10/10/2010") || inizioPrenota.equals(":") || finePrenota.equals(":") || tipoPrenota.equals(null)) {
             showMes.setVisible(true);
         }else {
             LocalTime timeInizioPrenota = LocalTime.parse(inizioPrenota);

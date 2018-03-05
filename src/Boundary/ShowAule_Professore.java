@@ -50,7 +50,7 @@ public class ShowAule_Professore {
         Stage thirdStage = new Stage();
         FXMLLoader loader = new FXMLLoader(getClass().getResource("../Boundary/Aule_Professore.fxml"));
         AnchorPane root = loader.load();
-        thirdStage.setTitle("Interface of" + profName + "(professor)");
+        thirdStage.setTitle("Interface of " + profName + "(professor)");
         Scene scene = new Scene(root, 436, 275);
         //thirdStage.setScene(new Scene(root, 488, 277));
 

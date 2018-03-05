@@ -4,47 +4,35 @@
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.RadioButton?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.layout.AnchorPane?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="501.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Boundary.ShowAule_Segretaria">
    <children>
-      <TableView fx:id="tableSecretary" layoutX="9.0" layoutY="14.0" prefHeight="200.0" prefWidth="583.0">
-        <columns>
-          <TableColumn fx:id="columnAulaSecretary" prefWidth="61.0" text="Nome" />
-          <TableColumn fx:id="columnTipoSecretary" prefWidth="99.0" text="Tipo" />
-            <TableColumn fx:id="columnDataSecretary" prefWidth="137.0" text="Data" />
-            <TableColumn fx:id="columnInizioSecretary" prefWidth="76.0" text="Ora inizio" />
-            <TableColumn fx:id="columnFineSecretary" prefWidth="73.0" text="Ora fine" />
-            <TableColumn fx:id="columnFromSecretary" prefWidth="134.0" text="From" />
-        </columns>
-      </TableView>
-      <Button fx:id="btnSearch" layoutX="205.0" layoutY="439.0" mnemonicParsing="false" onAction="#loadDataFromDatabase" text="Search" />
-      <Label layoutX="18.0" layoutY="235.0" text="Aula" />
-      <TextField fx:id="textAuleSecretary" layoutX="100.0" layoutY="230.0" prefHeight="26.0" prefWidth="68.0" />
-      <RadioButton fx:id="rbEsameSecretary" layoutX="100.0" layoutY="278.0" mnemonicParsing="false" text="Esame">
+      <Button fx:id="btnSearch" layoutX="203.0" layoutY="460.0" mnemonicParsing="false" onAction="#loadDataFromDatabase" text="Search" />
+      <Label layoutX="16.0" layoutY="256.0" text="Aula" />
+      <TextField fx:id="textAuleSecretary" layoutX="98.0" layoutY="251.0" prefHeight="26.0" prefWidth="68.0" />
+      <RadioButton fx:id="rbEsameSecretary" layoutX="98.0" layoutY="299.0" mnemonicParsing="false" text="Esame">
          <toggleGroup>
             <ToggleGroup fx:id="groupTipo" />
          </toggleGroup>
       </RadioButton>
-      <RadioButton fx:id="rbConfSecretary" layoutX="178.0" layoutY="278.0" mnemonicParsing="false" text="Conf" toggleGroup="$groupTipo" />
-      <DatePicker fx:id="pickDateSecretary" layoutX="100.0" layoutY="321.0" prefHeight="26.0" prefWidth="136.0" />
-      <TextField fx:id="InizioSecretary" layoutX="100.0" layoutY="355.0" prefHeight="26.0" prefWidth="42.0" />
-      <Label layoutX="18.0" layoutY="279.0" text="Tipo" />
-      <Label layoutX="16.0" layoutY="326.0" text="Data" />
-      <Label layoutX="16.0" layoutY="360.0" text="Ora Inizio" />
-      <Button fx:id="btnConfirmProf" layoutX="19.0" layoutY="439.0" mnemonicParsing="false" onAction="#newPrenotation" text="Conferma Prenotazione" />
-      <Label layoutX="18.0" layoutY="394.0" text="Ora fine" />
-      <TextField fx:id="fineSecretary" layoutX="100.0" layoutY="389.0" prefHeight="26.0" prefWidth="42.0" />
-      <Label fx:id="showMes" layoutX="300.0" layoutY="444.0" text="Completare tutti i campi!" textFill="RED" visible="false" />
-      <TextField fx:id="altroSecretary" layoutX="319.0" layoutY="274.0" promptText="Altro" />
-      <TextField fx:id="inizio1Secretary" layoutX="160.0" layoutY="355.0" prefHeight="26.0" prefWidth="42.0" />
-      <TextField fx:id="fine1Secretary" layoutX="160.0" layoutY="389.0" prefHeight="26.0" prefWidth="42.0" />
-      <Label layoutX="145.0" layoutY="360.0" text=":" />
-      <Label layoutX="143.0" layoutY="394.0" text=":" />
-      <RadioButton fx:id="rbAltroSecretary" layoutX="248.0" layoutY="278.0" mnemonicParsing="false" text="Altro" toggleGroup="$groupTipo" />
+      <RadioButton fx:id="rbConfSecretary" layoutX="176.0" layoutY="299.0" mnemonicParsing="false" text="Conf" toggleGroup="$groupTipo" />
+      <DatePicker fx:id="pickDateSecretary" layoutX="98.0" layoutY="342.0" prefHeight="26.0" prefWidth="136.0" />
+      <TextField fx:id="InizioSecretary" layoutX="98.0" layoutY="376.0" prefHeight="26.0" prefWidth="42.0" />
+      <Label layoutX="16.0" layoutY="300.0" text="Tipo" />
+      <Label layoutX="14.0" layoutY="347.0" text="Data" />
+      <Label layoutX="14.0" layoutY="381.0" text="Ora Inizio" />
+      <Button fx:id="btnConfirmProf" layoutX="17.0" layoutY="460.0" mnemonicParsing="false" onAction="#newPrenotation" text="Conferma Prenotazione" />
+      <Label layoutX="16.0" layoutY="415.0" text="Ora fine" />
+      <TextField fx:id="fineSecretary" layoutX="98.0" layoutY="410.0" prefHeight="26.0" prefWidth="42.0" />
+      <Label fx:id="showMes" layoutX="298.0" layoutY="465.0" text="Completare tutti i campi!" textFill="RED" visible="false" />
+      <TextField fx:id="altroSecretary" layoutX="317.0" layoutY="295.0" promptText="Altro" />
+      <TextField fx:id="inizio1Secretary" layoutX="158.0" layoutY="376.0" prefHeight="26.0" prefWidth="42.0" />
+      <TextField fx:id="fine1Secretary" layoutX="158.0" layoutY="410.0" prefHeight="26.0" prefWidth="42.0" />
+      <Label layoutX="143.0" layoutY="381.0" text=":" />
+      <Label layoutX="141.0" layoutY="415.0" text=":" />
+      <RadioButton fx:id="rbAltroSecretary" layoutX="246.0" layoutY="299.0" mnemonicParsing="false" text="Altro" toggleGroup="$groupTipo" />
    </children>
 </AnchorPane>

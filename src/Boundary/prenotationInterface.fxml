@@ -28,7 +28,7 @@
       <Label layoutX="16.0" layoutY="378.0" text="Ora Inizio" />
       <Button fx:id="btnConfirmProf" layoutX="14.0" layoutY="457.0" mnemonicParsing="false" onAction="#prenota" text="Conferma Prenotazione" />
       <Label layoutX="18.0" layoutY="412.0" text="Ora fine" />
-      <Label fx:id="showMes" layoutX="294.0" layoutY="462.0" text="Completare tutti i campi!" textFill="RED" visible="false" />
+      <Label fx:id="showMes" layoutX="411.0" layoutY="462.0" text="Completare tutti i campi!" textFill="RED" visible="false" />
       <TextField fx:id="textAltroProf" layoutX="322.0" layoutY="292.0" promptText="Altro" />
       <Label layoutX="145.0" layoutY="378.0" text=":" />
       <Label layoutX="145.0" layoutY="412.0" text=":" />

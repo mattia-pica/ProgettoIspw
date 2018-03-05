@@ -3,6 +3,7 @@ package Control;
 import Boundary.LoginGUI;
 import Boundary.PrenotationInterface;
 import Boundary.ShowAule_Professore;
+import Boundary.ShowAule_Segretaria;
 import Entity.Disponible_Room;
 import Entity.Room;
 import Entity.Secretary;
@@ -56,21 +57,20 @@ public class Controller extends Application{
         singleton.setProfessore(professore);
     }
 
-
-
     public Professore check(String u, String p) {
         LoginDB loginDB = new LoginDB();
         Professore professore = loginDB.log(u, p);
         return professore;
     }
 
-    public void show(ObservableList<Classroom_Segretaria> data, TableView tableSecretary,
-                           TableColumn columnAulaSecretary, TableColumn columnTipoSecretary,
-                           TableColumn columnDataSecretary, TableColumn columnInizioSecretary,
-                           TableColumn columnFineSecretary, TableColumn columnFromSecretary) {
-        ShowDatabase_Secr showDatabaseSecr = new ShowDatabase_Secr();
-        showDatabaseSecr.show_secr(data, tableSecretary, columnAulaSecretary, columnTipoSecretary, columnDataSecretary,
-                columnInizioSecretary, columnFineSecretary, columnFromSecretary);
+    public void show() {
+        ArrayList<Room> S;
+        S = ShowDatabase_Secr.show_secr();
+        ShowAule_Segretaria showAule_segretaria = new ShowAule_Segretaria();
+        for (Room room : S){
+            showAule_segretaria.parseRoom(room.getNome(), room.getTipopr(), room.getDatapr(), room.getInizio(),
+                    room.getFine(), room.getFromp());
+        }
     }
 
     public void show_p(LocalTime timeInizio, LocalTime timeFine, String dateSearch) {
@@ -88,7 +88,8 @@ public class Controller extends Application{
         R = ShowCompleteDB_Prof.show_completeDB();
         PrenotationInterface pi = new PrenotationInterface();
         for (Room room : R) {
-            pi.parseRoom(room.getNome(), room.getTipopr(), room.getDatapr(), room.getInizio(), room.getFine(), room.getFromp());
+            pi.parseRoom(room.getNome(), room.getTipopr(), room.getDatapr(), room.getInizio(), room.getFine(),
+                    room.getFromp());
         }
     }
 
