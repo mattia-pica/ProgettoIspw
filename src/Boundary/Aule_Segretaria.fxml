@@ -10,7 +10,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="501.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Boundary.ShowAule_Segretaria">
    <children>
-      <Button fx:id="btnSearch" layoutX="203.0" layoutY="460.0" mnemonicParsing="false" onAction="#loadDataFromDatabase" text="Search" />
+      <Button fx:id="btnSearch" layoutX="203.0" layoutY="460.0" mnemonicParsing="false" onAction="#loadDataFromDatabase" text="Mostra" />
       <Label layoutX="16.0" layoutY="256.0" text="Aula" />
       <TextField fx:id="textAuleSecretary" layoutX="98.0" layoutY="251.0" prefHeight="26.0" prefWidth="68.0" />
       <RadioButton fx:id="rbEsameSecretary" layoutX="98.0" layoutY="299.0" mnemonicParsing="false" text="Esame">

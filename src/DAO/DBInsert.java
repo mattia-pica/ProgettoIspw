@@ -23,7 +23,7 @@ public class DBInsert extends DB_Connection_Aule {
 
         if (!a) {
             try {
-                String controlQuery = "SELECT Nome FROM Aule.dati WHERE Nome='" + nameAula + "' AND((DataPr='" + dataPrenota
+                String controlQuery = "SELECT Nome FROM dbEsame.Aule WHERE Nome='" + nameAula + "' AND((DataPr='" + dataPrenota
                         + "' AND Inizio<='" + timeInizioPrenota + "' AND Fine>='" + timeInizioPrenota + "')"
                         + "OR(DataPr='" + dataPrenota + "' AND Fine>='" + timeFinePrenota + "' AND Inizio<='" + timeFinePrenota + "') " +
                         "OR(DataPr='" + dataPrenota + "' AND Inizio>='" + timeInizioPrenota + "' AND Fine<='" + timeFinePrenota + "')"
@@ -82,7 +82,7 @@ public class DBInsert extends DB_Connection_Aule {
 
 
             } else{
-                String controlQuery = "SELECT DISTINCT Nome FROM dati WHERE Nome NOT IN (SELECT Nome FROM Aule.dati " +
+                String controlQuery = "SELECT DISTINCT Nome FROM dbEsame.Aule WHERE Nome NOT IN (SELECT Nome FROM Aule.dati " +
                         "WHERE DataPr='" + dataPrenota + "'" +
                         " AND ((Inizio<='" + timeInizioPrenota + "' AND Fine>='" + timeInizioPrenota + "') " +
                         "" + "OR (Fine>='" + timeFinePrenota + "' AND Inizio<='" + timeFinePrenota + "') " +
@@ -100,7 +100,7 @@ public class DBInsert extends DB_Connection_Aule {
                         //----------------PRENOTAZIONE-----------------------//
 
                         try {
-                            String deleteSecretary = "DELETE FROM Aule.dati WHERE DataPr='" + dataPrenota + "'" +
+                            String deleteSecretary = "DELETE FROM dbEsame.Aule WHERE DataPr='" + dataPrenota + "'" +
                                     " AND ((Inizio<='" + timeInizioPrenota + "' AND Fine>='" + timeInizioPrenota + "') " +
                                     "OR (Fine>='" + timeFinePrenota + "' AND Inizio<='" + timeFinePrenota + "') " +
                                     "OR (Inizio>='" + timeInizioPrenota + "' AND Fine<='" + timeFinePrenota + "') " +
@@ -113,7 +113,7 @@ public class DBInsert extends DB_Connection_Aule {
                             statement1.executeUpdate(deleteSecretary);
                             statement1.close();
                             statement.close();
-                            String insertSecretary = "INSERT INTO Aule.dati (Nome, TipoPr, DataPr, Inizio, Fine, FromP) " +
+                            String insertSecretary = "INSERT INTO dbEsame.Aule (Nome, TipoPr, DataPr, Inizio, Fine, FromP) " +
                                     "VALUES " + "('" + nameAula + "','" + tipoPrenota + "','" + dataPrenota + "','"
                                     + timeInizioPrenota + "','" + timeFinePrenota + "','Secretary')";
                             DB_Connection_Aule db_connection_aule2 = new DB_Connection_Aule();

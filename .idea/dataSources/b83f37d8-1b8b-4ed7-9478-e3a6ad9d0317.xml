@@ -924,7 +924,6 @@
     <column id="233" parent="232" name="nome">
       <Position>1</Position>
       <DataType>char(25)|0</DataType>
-      <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
     <column id="234" parent="232" name="tipopr">
@@ -935,19 +934,16 @@
     <column id="235" parent="232" name="datapr">
       <Position>3</Position>
       <DataType>char(25)|0</DataType>
-      <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
     <column id="236" parent="232" name="inizio">
       <Position>4</Position>
       <DataType>time|0</DataType>
-      <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
     <column id="237" parent="232" name="fine">
       <Position>5</Position>
       <DataType>time|0</DataType>
-      <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
     <column id="238" parent="232" name="fromp">
@@ -955,13 +951,23 @@
       <DataType>char(25)|0</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <key id="239" parent="232" name="PRIMARY">
-      <NameSurrogate>1</NameSurrogate>
+    <index id="239" parent="232" name="Aule_nome_uindex">
       <ColNames>nome
+tipopr
 datapr
 inizio
-fine</ColNames>
-      <Primary>1</Primary>
+fine
+fromp</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="240" parent="232" name="Aule_nome_uindex">
+      <ColNames>nome
+tipopr
+datapr
+inizio
+fine
+fromp</ColNames>
+      <UnderlyingIndexName>Aule_nome_uindex</UnderlyingIndexName>
     </key>
   </database-model>
 </dataSource>

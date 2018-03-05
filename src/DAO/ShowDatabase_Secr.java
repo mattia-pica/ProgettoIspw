@@ -38,8 +38,8 @@ public class ShowDatabase_Secr {
             ResultSet rs = connection3.createStatement().executeQuery("SELECT * FROM dbEsame.Aule");
             while (rs.next()) {
                 Classrooms.add(new Room(rs.getString("Nome"), rs.getString("TipoPr"),
-                        rs.getString("DataPr"), rs.getString("Inizio"), rs.getString("Fine"),
-                        rs.getString("FromP")));
+                        rs.getString("DataPr"), rs.getString("Inizio"),
+                        rs.getString("Fine"), rs.getString("FromP")));
             }
             connection3.close();
         } catch (SQLException e) {

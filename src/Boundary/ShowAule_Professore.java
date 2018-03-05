@@ -18,10 +18,13 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
+import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 
 public class ShowAule_Professore {
+    @FXML
+    private Button Back;
     @FXML
     private TextField textOraInizioProf1;
     @FXML
@@ -62,8 +65,6 @@ public class ShowAule_Professore {
         table.setLayoutY(10);
 
         ((AnchorPane) scene.getRoot()).getChildren().addAll(table);
-
-
         table.setItems(F);
         table.getColumns().addAll(columnNome);
         thirdStage.setScene(scene);
@@ -72,41 +73,66 @@ public class ShowAule_Professore {
 
     public void parseRoom(String nome){
         roomnome=nome;
-
-
         F.add(new Classroom_Professore(roomnome));
         columnNome.setCellValueFactory(new PropertyValueFactory<>("nome"));
         table.setItems(F);
     }
 
-    public void loadDataFromDBProf(ActionEvent actionEvent){
+    public void loadDataFromDBProf(ActionEvent actionEvent) throws Exception{
 
-        int InizioSearch = Integer.parseInt(oraInizioSearch.getText().toString());
+        String c = "10/10/2010";
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        LocalDate localDate = LocalDate.parse(c, formatter);
+        datePickerSearch.setValue(localDate);
+
+        /*int InizioSearch = Integer.parseInt(oraInizioSearch.getText().toString());
         int FIneSearch = Integer.parseInt(oraFineSearch.getText().toString());
         int InizioSearch1 = Integer.parseInt(oraInizioSearch1.getText().toString());
         int FIneSearch1 = Integer.parseInt(oraFineSearch1.getText().toString());
 
         if ((InizioSearch+InizioSearch1) > (FIneSearch+FIneSearch1)){
             System.out.println("L'orario di fine è < di quello di inizio!!!");
-        }
-        String uno = oraInizioSearch.getText().toString() + ":" + oraInizioSearch1.getText().toString() + ":00";
-        String due = oraFineSearch.getText().toString() + ":" + oraFineSearch1.getText().toString() + ":00";
+        }*/
+        String uno = oraInizioSearch.getText().toString() + ":" + oraInizioSearch1.getText().toString();
+        String due = oraFineSearch.getText().toString() + ":" + oraFineSearch1.getText().toString();
         String dateSearch = datePickerSearch.getValue().format(DateTimeFormatter.ofPattern("dd/MM/yyyy"));
 
-        LocalTime timeInizio = LocalTime.parse(uno);
-        LocalTime timeFine = LocalTime.parse(due);
+        if(uno.equals(":") || due.equals(":") || dateSearch.equals("10/10/2010")){
 
-       /* DateFormat sdf = new SimpleDateFormat("hh:mm:ss");
-        Date timeInizio = sdf.parse(uno);
-        Date timeFine = sdf.parse(due);*/
+            Stage incompleteStage = new Stage();
+            FXMLLoader loader1 = new FXMLLoader(getClass().getResource("../Boundary/incompleteFields.fxml"));
+            AnchorPane root = loader1.load();
+            Scene scene = new Scene(root, 248, 142);
+            incompleteStage.setScene(scene);
+            incompleteStage.show();
 
-        Controller c6 = new Controller();
-        c6.show_p(timeInizio, timeFine, dateSearch);
+        }else{
+            LocalTime timeInizio = LocalTime.parse(uno);
+            LocalTime timeFine = LocalTime.parse(due);
+            Controller c6 = new Controller();
+            c6.show_p(timeInizio, timeFine, dateSearch);
+        }
     }
     public void newPrenotation(ActionEvent actionEvent) throws Exception {
 
         PrenotationInterface prenotation = new PrenotationInterface();
         prenotation.prenotationInterface();
         ((Node)(actionEvent.getSource())).getScene().getWindow().hide();
+    }
+
+    public void incorrect() throws Exception{
+
+        Stage incompleteStage = new Stage();
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("../Boundary/incompleteFiedls.fxml"));
+        AnchorPane root = loader.load();
+        Scene scene = new Scene(root, 200, 200);
+
+    }
+
+    public void turnBack(ActionEvent actionEvent) {
+
+        ((Node)(actionEvent.getSource())).getScene().getWindow().hide();
+
+
     }
 }

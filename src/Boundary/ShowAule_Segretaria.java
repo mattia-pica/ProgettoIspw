@@ -23,6 +23,7 @@ import java.time.format.DateTimeFormatter;
 
 public class ShowAule_Segretaria{
 
+    public Button btnUpdate;
     @FXML
     private RadioButton rbAltroSecretary;
     @FXML
@@ -147,6 +148,7 @@ public class ShowAule_Segretaria{
 
     public void loadDataFromDatabase(ActionEvent actionEvent) {
 
+        S.clear();
         Controller c3 = new Controller();
         c3.show();
     }
